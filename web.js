@@ -212,6 +212,32 @@
             {mode: "no-cors", keepalive: true, credentials: "omit"}).catch(function () {});
     } catch (e) { /* navegador antiguo: no se cuenta */ }
   };
+  // Visitas: qué página, de dónde llega (buscador, directo, otra web…) y si es un móvil. Nada de la persona: sin
+  // cookies, sin identificadores y sin la dirección exacta de la que viene (solo su tipo). Solo en la web publicada.
+  (function () {
+    if (location.hostname !== "peritolab.github.io" || navigator.webdriver) return;
+    var pagina = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "");
+    if (pagina === "index" || pagina === "") pagina = "inicio";
+    if (!/^[a-z0-9-]{1,60}$/.test(pagina)) return;
+    var h = "";
+    try { h = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) { h = "?"; }
+    var origen = !h ? "directo"
+      : (h === location.hostname || /jositofidigym\.github\.io$/.test(h)) ? "interno"
+      : /(^|\.)google\./.test(h) ? "google"
+      : /(^|\.)bing\.com$/.test(h) ? "bing"
+      : /duckduckgo|yahoo|ecosia|qwant|yandex|brave|startpage/.test(h) ? "otro_buscador"
+      : /linkedin\.com$|lnkd\.in$/.test(h) ? "linkedin"
+      : /facebook|instagram|(^|\.)t\.co$|twitter|(^|\.)x\.com$|whatsapp|youtube/.test(h) ? "redes"
+      : /mail|outlook|live\.com$/.test(h) ? "correo"
+      : "otra_web";
+    var disp = (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+      (window.matchMedia("(pointer: coarse)").matches && window.innerWidth < 900)) ? "m" : "o";
+    try {
+      fetch(SERVIDOR + "?accion=visita&p=" + pagina + "&o=" + origen + "&d=" + disp,
+            {mode: "no-cors", keepalive: true, credentials: "omit"}).catch(function () {});
+    } catch (e) { /* navegador antiguo: no se cuenta */ }
+  })();
+
   // Los botones de los artículos (data-clic="g.<artículo>.<m|f>"): qué artículo lleva a las apps.
   document.addEventListener("click", function (ev) {
     var a = ev.target.closest && ev.target.closest("a[data-clic]");

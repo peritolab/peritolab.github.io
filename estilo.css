@@ -478,6 +478,24 @@ html:not(.js) .win-progress span { width: 100%; }
 .guia .guia-cta-mas { margin: 16px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 15px; }
 .guia .guia-cta-mas a { white-space: nowrap; }
 .guia .guia-relacionadas { margin-top: 56px; }
+/* Guías en las listas (índice y «Sigue leyendo»): miniatura a la izquierda, título y descripción a la derecha. */
+.guia ul.guias li { padding-bottom: 22px; margin-bottom: 22px; }
+.guia .guia-fila { display: grid; grid-template-columns: 240px 1fr; gap: 26px; align-items: center; color: var(--muted); }
+.guia .guia-fila .guia-mini { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 0 1px var(--line-2);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+.guia .guia-fila strong { display: block; color: var(--text); font-size: 18px; line-height: 1.35; margin-bottom: 6px;
+  transition: color .25s; }
+.guia .guia-fila:hover strong { color: var(--accent-3); }
+.guia .guia-fila:hover .guia-mini { transform: translateY(-2px); box-shadow: 0 0 0 1px var(--accent-2); }
+.guia .guia-relacionadas .guia-fila { grid-template-columns: 160px 1fr; gap: 20px; }
+.guia .guia-relacionadas .guia-fila strong { font-size: 16px; }
+.guia-tarjeta .guia-mini { display: block; width: 100%; height: auto; border-radius: 12px; margin: 0 0 22px;
+  box-shadow: 0 0 0 1px var(--line); }
+@media (max-width: 720px) {
+  .guia .guia-fila { grid-template-columns: 1fr; gap: 14px; }
+  .guia .guia-relacionadas .guia-fila { grid-template-columns: 110px 1fr; gap: 14px; }
+  .guia .guia-relacionadas .guia-fila > span > span { display: none; }
+}
 .guia-tarjeta { display: block; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
 .guia-tarjeta:hover { transform: translateY(-3px); }
 .guia-tarjeta .eyebrow { font-size: 12px; }

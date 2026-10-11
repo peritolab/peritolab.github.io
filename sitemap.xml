@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://peritolab.github.io/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://peritolab.github.io/compresor.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://peritolab.github.io/matriculas.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://peritolab.github.io/condiciones.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://peritolab.github.io/privacidad.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://peritolab.github.io/aviso-legal.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://peritolab.github.io/guias.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://peritolab.github.io/guia-organizar-fotos-peritaje.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://peritolab.github.io/guia-reducir-tamano-fotos.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://peritolab.github.io/guia-fotos-heic-iphone.html</loc><lastmod>2026-10-09</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url><loc>https://peritolab.github.io/</loc><lastmod>2026-10-11</lastmod><image:image><image:loc>https://peritolab.github.io/img/flujo-trabajo-perito-peritolab.svg</image:loc></image:image></url>
+  <url><loc>https://peritolab.github.io/compresor.html</loc><lastmod>2026-10-11</lastmod><image:image><image:loc>https://peritolab.github.io/img/comprimir-fotos-siniestro-antes-despues.svg</image:loc></image:image></url>
+  <url><loc>https://peritolab.github.io/matriculas.html</loc><lastmod>2026-10-11</lastmod><image:image><image:loc>https://peritolab.github.io/img/fotos-peritaje-antes-despues.svg</image:loc></image:image><image:image><image:loc>https://peritolab.github.io/img/reportaje-fotografico-pdf-peritaje.svg</image:loc></image:image><image:image><image:loc>https://peritolab.github.io/img/actividad-equipo-gabinete.svg</image:loc></image:image></url>
+  <url><loc>https://peritolab.github.io/condiciones.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://peritolab.github.io/privacidad.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://peritolab.github.io/aviso-legal.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://peritolab.github.io/guias.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://peritolab.github.io/guia-organizar-fotos-peritaje.html</loc><lastmod>2026-10-11</lastmod><image:image><image:loc>https://peritolab.github.io/img/fotos-peritaje-antes-despues.svg</image:loc></image:image></url>
+  <url><loc>https://peritolab.github.io/guia-reducir-tamano-fotos.html</loc><lastmod>2026-10-11</lastmod><image:image><image:loc>https://peritolab.github.io/img/comprimir-fotos-siniestro-antes-despues.svg</image:loc></image:image></url>
+  <url><loc>https://peritolab.github.io/guia-fotos-heic-iphone.html</loc><lastmod>2026-10-11</lastmod><image:image><image:loc>https://peritolab.github.io/img/fotos-heic-iphone-a-jpg.svg</image:loc></image:image></url>
 </urlset>

@@ -212,6 +212,12 @@
             {mode: "no-cors", keepalive: true, credentials: "omit"}).catch(function () {});
     } catch (e) { /* navegador antiguo: no se cuenta */ }
   };
+  // Los botones de los artículos (data-clic="g.<artículo>.<m|f>"): qué artículo lleva a las apps.
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest("a[data-clic]");
+    if (a && /^g\.[a-z0-9-]{1,60}\.[mf]$/.test(a.getAttribute("data-clic"))) contar("w:" + a.getAttribute("data-clic"));
+  }, true);
+
   // En el ordenador: se cuenta la descarga y se explica el aviso azul de Windows (programa nuevo sin firma).
   if (!movil) {
     var ayuda = null;

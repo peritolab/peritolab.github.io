@@ -215,14 +215,14 @@
   // Visitas: qué página, de dónde llega (buscador, directo, otra web…) y si es un móvil. Nada de la persona: sin
   // cookies, sin identificadores y sin la dirección exacta de la que viene (solo su tipo). Solo en la web publicada.
   (function () {
-    if (location.hostname !== "peritolab.github.io" || navigator.webdriver) return;
+    if (location.hostname !== "peritolab.es" || navigator.webdriver) return;
     var pagina = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "");
     if (pagina === "index" || pagina === "") pagina = "inicio";
     if (!/^[a-z0-9-]{1,60}$/.test(pagina)) return;
     var h = "";
     try { h = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) { h = "?"; }
     var origen = !h ? "directo"
-      : (h === location.hostname || /jositofidigym\.github\.io$/.test(h)) ? "interno"
+      : (h === location.hostname || /(^|\.)peritolab\.es$|peritolab\.github\.io$|jositofidigym\.github\.io$/.test(h)) ? "interno"
       : /(^|\.)google\./.test(h) ? "google"
       : /(^|\.)bing\.com$/.test(h) ? "bing"
       : /duckduckgo|yahoo|ecosia|qwant|yandex|brave|startpage/.test(h) ? "otro_buscador"

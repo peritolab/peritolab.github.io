@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://peritolab.github.io/sitemap.xml
+Sitemap: https://peritolab.es/sitemap.xml

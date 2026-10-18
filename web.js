@@ -212,13 +212,30 @@
             {mode: "no-cors", keepalive: true, credentials: "omit"}).catch(function () {});
     } catch (e) { /* navegador antiguo: no se cuenta */ }
   };
+  // El nombre corto de una página de la web («inicio», «matriculas», «guia-…»), o "" si no es de aquí.
+  var nombrePagina = function (ruta) {
+    var p = (String(ruta).split("/").pop() || "index.html").replace(/\.html$/, "");
+    if (p === "index" || p === "") p = "inicio";
+    return /^[a-z0-9-]{1,60}$/.test(p) ? p : "";
+  };
+  var publicada = location.hostname === "peritolab.es" && !navigator.webdriver;
+  var paginaActual = nombrePagina(location.pathname);
+  // Lo que se hace en la web (botones, lectura, recorrido), igual de anónimo que las visitas: tipo, página y un
+  // valor de una lista cerrada. Sin cookies ni identificadores: nada une una página con la siguiente.
+  var evento = function (tipo, valor) {
+    if (!publicada || !paginaActual) return;
+    try {
+      fetch(SERVIDOR + "?accion=evento&t=" + tipo + "&p=" + paginaActual + "&v=" + encodeURIComponent(valor),
+            {mode: "no-cors", keepalive: true, credentials: "omit"}).catch(function () {});
+    } catch (e) { /* navegador antiguo: no se cuenta */ }
+    if (tipo === "clic" && window.gtag) window.gtag("event", "clic_" + valor, {pagina: paginaActual});
+  };
   // Visitas: qué página, de dónde llega (buscador, directo, otra web…) y si es un móvil. Nada de la persona: sin
   // cookies, sin identificadores y sin la dirección exacta de la que viene (solo su tipo). Solo en la web publicada.
   (function () {
-    if (location.hostname !== "peritolab.es" || navigator.webdriver) return;
-    var pagina = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "");
-    if (pagina === "index" || pagina === "") pagina = "inicio";
-    if (!/^[a-z0-9-]{1,60}$/.test(pagina)) return;
+    if (!publicada) return;
+    var pagina = paginaActual;
+    if (!pagina) return;
     var h = "";
     try { h = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) { h = "?"; }
     var origen = !h ? "directo"
@@ -236,13 +253,131 @@
       fetch(SERVIDOR + "?accion=visita&p=" + pagina + "&o=" + origen + "&d=" + disp,
             {mode: "no-cors", keepalive: true, credentials: "omit"}).catch(function () {});
     } catch (e) { /* navegador antiguo: no se cuenta */ }
+    // El recorrido: si viene de otra página de esta web, de cuál (solo su nombre).
+    if (origen === "interno") {
+      var de = "";
+      try { de = nombrePagina(new URL(document.referrer).pathname); } catch (e) { de = ""; }
+      if (de && de !== pagina) evento("paso", de);
+    }
   })();
+
+  // Lectura: al salir de la página, cuánto tiempo ha estado a la vista (por tramos) y hasta dónde se bajó.
+  (function () {
+    if (!publicada || !paginaActual) return;
+    var visible = 0, desde = document.visibilityState === "visible" ? Date.now() : 0, hasta = 0, enviado = false;
+    var medir = function () {
+      var alto = document.documentElement.scrollHeight - window.innerHeight;
+      var p = alto > 0 ? (window.scrollY / alto) * 100 : 100;
+      if (p > hasta) hasta = p;
+    };
+    window.addEventListener("scroll", medir, {passive: true});
+    medir();
+    var enviar = function () {
+      if (enviado) return;
+      if (desde) { visible += Date.now() - desde; desde = 0; }
+      var s = visible / 1000;
+      if (s < 2) return;                                  // abrir y cerrar no es leer
+      enviado = true;
+      var tramo = s < 10 ? "a" : s < 30 ? "b" : s < 60 ? "c" : s < 180 ? "d" : "e";
+      var bajo = hasta >= 95 ? 100 : hasta >= 75 ? 75 : hasta >= 50 ? 50 : hasta >= 25 ? 25 : 0;
+      evento("lectura", tramo + bajo);
+    };
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "hidden") enviar();
+      else if (!enviado) desde = Date.now();
+    });
+    window.addEventListener("pagehide", enviar);
+  })();
+
+  // Los botones clave: descargar, escribirnos, ver cada aplicación, los precios y el vídeo (con su página).
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest("a[href]");
+    if (!a) return;
+    var href = a.getAttribute("href") || "";
+    var boton = /PeritoLabCompresor-instalador\.exe$/.test(href) ? "descarga_compresor"
+      : /-instalador\.exe$/.test(href) ? "descarga"
+      : /^mailto:/.test(href) ? "contacto"
+      : /(^|\/)video\.html/.test(href) ? "video"
+      : /#precios$/.test(href) ? "precios"
+      : /^matriculas\.html($|#)/.test(href) && paginaActual !== "matriculas" ? "ver_matriculas"
+      : /^compresor\.html($|#)/.test(href) && paginaActual !== "compresor" ? "ver_compresor"
+      : "";
+    if (boton) evento("clic", boton);
+  }, true);
 
   // Los botones de los artículos (data-clic="g.<artículo>.<m|f>"): qué artículo lleva a las apps.
   document.addEventListener("click", function (ev) {
     var a = ev.target.closest && ev.target.closest("a[data-clic]");
     if (a && /^g\.[a-z0-9-]{1,60}\.[mf]$/.test(a.getAttribute("data-clic"))) contar("w:" + a.getAttribute("data-clic"));
   }, true);
+
+  // Google Analytics, SOLO si se acepta en el aviso (política de cookies). Hasta entonces no se carga nada de
+  // Google. La elección se guarda 13 meses en este navegador; el enlace «Cookies» del pie vuelve a preguntar.
+  var GA = "G-WHWGHK8QXK";                                         // código de medición de Google Analytics (G-…)
+  var ELECCION = "peritolab_cookies";
+  var leerEleccion = function () {
+    try {
+      var e = JSON.parse(localStorage.getItem(ELECCION) || "null");
+      return e && (Date.now() - e.cuando) < 395 * 86400000 ? e.si : null;
+    } catch (err) { return null; }
+  };
+  var cargarGA = function () {
+    if (!GA || window.gtag || !publicada) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("consent", "default", {ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied",
+                                       analytics_storage: "granted"});
+    window.gtag("js", new Date());
+    window.gtag("config", GA, {allow_google_signals: false, allow_ad_personalization_signals: false,
+                               cookie_expires: 395 * 86400});
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA;
+    document.head.appendChild(s);
+  };
+  var avisoCookies = null;
+  var preguntar = function () {
+    if (!GA || avisoCookies) return;
+    avisoCookies = document.createElement("div");
+    avisoCookies.className = "toast toast-cookies";
+    avisoCookies.setAttribute("role", "dialog");
+    avisoCookies.setAttribute("aria-label", "Cookies");
+    avisoCookies.innerHTML = "<p><b>¿Nos dejas usar cookies de Google Analytics?</b> Nos dicen cómo se usa la web " +
+      "(de forma estadística, sin publicidad). Si las rechazas, la web funciona igual. " +
+      '<a href="cookies.html">Más información</a></p>' +
+      '<div class="toast-actions"><button type="button" class="btn btn-ghost btn-sm" data-no>Rechazar</button>' +
+      '<button type="button" class="btn btn-ghost btn-sm" data-si>Aceptar</button></div>';
+    document.body.appendChild(avisoCookies);
+    var elegir = function (si) {
+      try { localStorage.setItem(ELECCION, JSON.stringify({si: si, cuando: Date.now()})); } catch (err) { /* sin guardar */ }
+      avisoCookies.remove();
+      avisoCookies = null;
+      if (si) {
+        cargarGA();
+      } else {                                            // retirar el permiso: fuera sus cookies y que deje de medir
+        document.cookie.split(";").forEach(function (c) {
+          var nombre = c.split("=")[0].trim();
+          if (/^_ga/.test(nombre)) {
+            [location.hostname, "." + location.hostname, ""].forEach(function (d) {
+              document.cookie = nombre + "=; Max-Age=0; path=/" + (d ? "; domain=" + d : "");
+            });
+          }
+        });
+        if (window.gtag) location.reload();
+      }
+    };
+    avisoCookies.querySelector("[data-si]").addEventListener("click", function () { elegir(true); });
+    avisoCookies.querySelector("[data-no]").addEventListener("click", function () { elegir(false); });
+  };
+  var eleccion = leerEleccion();
+  if (eleccion === true) cargarGA();
+  else if (eleccion === null && paginaActual !== "cookies") preguntar();
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest("a[data-cookies]");
+    if (!a || !GA) return;
+    ev.preventDefault();
+    preguntar();
+  });
 
   // En el ordenador: se cuenta la descarga y se explica el aviso azul de Windows (programa nuevo sin firma).
   if (!movil) {

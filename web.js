@@ -188,8 +188,10 @@
       ev.preventDefault();
       cerrarAviso();
       var compresor = /PeritoLabCompresor/.test(a.getAttribute("href"));
-      var nombre = compresor ? "PeritoLab Compresor" : "PeritoLab Matrículas";
-      var aqui = location.origin + location.pathname.replace(/[^/]*$/, "") + (compresor ? "compresor.html" : "matriculas.html");
+      var conversor = /PeritoLabConversor/.test(a.getAttribute("href"));
+      var nombre = compresor ? "PeritoLab Compresor" : conversor ? "PeritoLab Conversor" : "PeritoLab Matrículas";
+      var aqui = location.origin + location.pathname.replace(/[^/]*$/, "") +
+        (compresor ? "compresor.html" : conversor ? "conversor.html" : "matriculas.html");
       aviso = document.createElement("div");
       aviso.className = "toast";
       aviso.setAttribute("role", "dialog");
@@ -295,6 +297,7 @@
     if (!a) return;
     var href = a.getAttribute("href") || "";
     var boton = /PeritoLabCompresor-instalador\.exe$/.test(href) ? "descarga_compresor"
+      : /PeritoLabConversor-instalador\.exe$/.test(href) ? "descarga_conversor"
       : /-instalador\.exe$/.test(href) ? "descarga"
       : /^mailto:/.test(href) ? "contacto"
       : /(^|\/)video\.html/.test(href) ? "video"
@@ -387,10 +390,10 @@
       if (!a) return;
       var href = a.getAttribute("href");
       if (/-instalador\.exe$/.test(href)) {
-        var compresor = /PeritoLabCompresor/.test(href);
-        contar(compresor ? "w:descarga_compresor" : "w:descarga");
+        var compresor = /PeritoLabCompresor/.test(href), conversor = /PeritoLabConversor/.test(href);
+        if (!conversor) contar(compresor ? "w:descarga_compresor" : "w:descarga");
         if (ayuda) ayuda.remove();
-        var nombre = compresor ? "PeritoLab Compresor" : "PeritoLab Matrículas";
+        var nombre = compresor ? "PeritoLab Compresor" : conversor ? "PeritoLab Conversor" : "PeritoLab Matrículas";
         ayuda = document.createElement("div");
         ayuda.className = "toast toast-ayuda";
         ayuda.setAttribute("role", "dialog");

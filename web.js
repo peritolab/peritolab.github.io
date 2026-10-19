@@ -391,7 +391,7 @@
       var href = a.getAttribute("href");
       if (/-instalador\.exe$/.test(href)) {
         var compresor = /PeritoLabCompresor/.test(href), conversor = /PeritoLabConversor/.test(href);
-        if (!conversor) contar(compresor ? "w:descarga_compresor" : "w:descarga");
+        contar(compresor ? "w:descarga_compresor" : conversor ? "w:descarga_conversor" : "w:descarga");
         if (ayuda) ayuda.remove();
         var nombre = compresor ? "PeritoLab Compresor" : conversor ? "PeritoLab Conversor" : "PeritoLab Matrículas";
         ayuda = document.createElement("div");
@@ -404,8 +404,8 @@
           '<div class="toast-actions"><button type="button" class="btn btn-ghost btn-sm">Entendido</button></div>';
         document.body.appendChild(ayuda);
         ayuda.querySelector("button").addEventListener("click", function () { ayuda.remove(); ayuda = null; });
-      } else if (/(^|\/)compresor\.html$/.test(location.pathname) && /^matriculas\.html/.test(href)) {
-        contar("w:compresor_web");
+      } else if (/(^|\/)(compresor|conversor)\.html$/.test(location.pathname) && /^matriculas\.html/.test(href)) {
+        contar(/conversor/.test(location.pathname) ? "w:conversor_web" : "w:compresor_web");
       }
     });
   }

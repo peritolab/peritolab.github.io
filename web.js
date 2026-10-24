@@ -179,17 +179,31 @@
   // teléfono no puede abrir, se ofrece mandarse el enlace para abrirlo en el ordenador.
   var movil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
     (window.matchMedia("(pointer: coarse)").matches && window.innerWidth < 900);
+  // Qué programa baja un enlace: los botones van a «descarga.html?app=…» (o, en esa página, al instalador).
+  var appDe = function (href) {
+    href = href || "";
+    var m = /descarga\.html\?app=(matriculas|compresor|conversor)\b/.exec(href);
+    if (m) return m[1];
+    if (!/-instalador\.exe$/.test(href)) return "";
+    return /PeritoLabCompresor/.test(href) ? "compresor" : /PeritoLabConversor/.test(href) ? "conversor" : "matriculas";
+  };
+  var NOMBRES = {matriculas: "PeritoLab Matrículas", compresor: "PeritoLab Compresor", conversor: "PeritoLab Conversor"};
+  var INSTALADOR = {
+    matriculas: "https://github.com/jositofidigym/organizador-matriculas/releases/latest/download/OrganizadorMatriculas-instalador.exe",
+    compresor: "https://github.com/jositofidigym/organizador-matriculas/releases/download/compresor/PeritoLabCompresor-instalador.exe",
+    conversor: "https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe"
+  };
   if (movil) {
     var aviso = null;
     var cerrarAviso = function () { if (aviso) { aviso.remove(); aviso = null; } };
     document.addEventListener("click", function (ev) {
-      var a = ev.target.closest && ev.target.closest('a[href$="-instalador.exe"]');
-      if (!a) return;
+      var a = ev.target.closest && ev.target.closest("a[href]");
+      var app = a ? appDe(a.getAttribute("href")) : "";
+      if (!app) return;
       ev.preventDefault();
       cerrarAviso();
-      var compresor = /PeritoLabCompresor/.test(a.getAttribute("href"));
-      var conversor = /PeritoLabConversor/.test(a.getAttribute("href"));
-      var nombre = compresor ? "PeritoLab Compresor" : conversor ? "PeritoLab Conversor" : "PeritoLab Matrículas";
+      var compresor = app === "compresor", conversor = app === "conversor";
+      var nombre = NOMBRES[app];
       var aqui = location.origin + location.pathname.replace(/[^/]*$/, "") +
         (compresor ? "compresor.html" : conversor ? "conversor.html" : "matriculas.html");
       aviso = document.createElement("div");
@@ -296,10 +310,13 @@
     var a = ev.target.closest && ev.target.closest("a[href]");
     if (!a) return;
     var href = a.getAttribute("href") || "";
-    var boton = /PeritoLabCompresor-instalador\.exe$/.test(href) ? "descarga_compresor"
-      : /PeritoLabConversor-instalador\.exe$/.test(href) ? "descarga_conversor"
-      : /-instalador\.exe$/.test(href) ? "descarga"
+    var app = paginaActual === "descarga" ? "" : appDe(href);  // en la de descarga, «otra vez» no es un clic nuevo
+    var boton = app === "compresor" ? "descarga_compresor"
+      : app === "conversor" ? "descarga_conversor"
+      : app ? "descarga"
+      : /^mailto:/.test(href) && /subject=Demo/.test(href) ? "demo"
       : /^mailto:/.test(href) ? "contacto"
+      : /^talleres\.html/.test(href) && paginaActual !== "talleres" ? "ver_talleres"
       : /(^|\/)video\.html/.test(href) ? "video"
       : /#precios$/.test(href) ? "precios"
       : /^matriculas\.html($|#)/.test(href) && paginaActual !== "matriculas" ? "ver_matriculas"
@@ -382,31 +399,93 @@
     preguntar();
   });
 
-  // En el ordenador: se cuenta la descarga y se explica el aviso azul de Windows (programa nuevo sin firma).
+  // Del Compresor o del Conversor a Matrículas: cuántos pasan de una app gratis a la de pago.
   if (!movil) {
-    var ayuda = null;
     document.addEventListener("click", function (ev) {
       var a = ev.target.closest && ev.target.closest("a[href]");
-      if (!a) return;
-      var href = a.getAttribute("href");
-      if (/-instalador\.exe$/.test(href)) {
-        var compresor = /PeritoLabCompresor/.test(href), conversor = /PeritoLabConversor/.test(href);
-        contar(compresor ? "w:descarga_compresor" : conversor ? "w:descarga_conversor" : "w:descarga");
-        if (ayuda) ayuda.remove();
-        var nombre = compresor ? "PeritoLab Compresor" : conversor ? "PeritoLab Conversor" : "PeritoLab Matrículas";
-        ayuda = document.createElement("div");
-        ayuda.className = "toast toast-ayuda";
-        ayuda.setAttribute("role", "dialog");
-        ayuda.setAttribute("aria-label", "Cómo instalarlo");
-        ayuda.innerHTML = "<p><b>Se está descargando " + nombre + ".</b> Ábrelo al terminar. Si Windows dice " +
-          "«Windows protegió su PC», pulsa <b>Más información</b> y después <b>Ejecutar de todas formas</b>: " +
-          "sale con los programas nuevos que aún no tienen firma digital.</p>" +
-          '<div class="toast-actions"><button type="button" class="btn btn-ghost btn-sm">Entendido</button></div>';
-        document.body.appendChild(ayuda);
-        ayuda.querySelector("button").addEventListener("click", function () { ayuda.remove(); ayuda = null; });
-      } else if (/(^|\/)(compresor|conversor)\.html$/.test(location.pathname) && /^matriculas\.html/.test(href)) {
+      if (a && /(^|\/)(compresor|conversor)\.html$/.test(location.pathname) && /^matriculas\.html/.test(a.getAttribute("href"))) {
         contar(/conversor/.test(location.pathname) ? "w:conversor_web" : "w:compresor_web");
       }
+    });
+  }
+
+  // La página de descarga (descarga.html?app=…): empieza la descarga, la cuenta UNA vez por visita y explica cómo
+  // instalarlo (y el aviso azul de Windows). En el móvil no descarga nada: el programa es para Windows. Fuera de la
+  // web publicada (pruebas en local) ni descarga ni cuenta.
+  if (paginaActual === "descarga") {
+    var appDescarga = (/[?&]app=(matriculas|compresor|conversor)\b/.exec(location.search) || [])[1];
+    var poner = function (clave, html) {
+      var el = document.querySelector('[data-descarga="' + clave + '"]');
+      if (el) el.innerHTML = html;
+    };
+    if (appDescarga) {
+      var nombreApp = NOMBRES[appDescarga], exe = INSTALADOR[appDescarga];
+      if (movil) {
+        var pagina = location.origin + location.pathname.replace(/[^/]*$/, "") +
+          (appDescarga === "matriculas" ? "matriculas.html" : appDescarga + ".html");
+        poner("titulo", nombreApp + " es para Windows");
+        poner("texto", "Ábrelo en el ordenador para descargarlo. <a href=\"mailto:?subject=" + encodeURIComponent(nombreApp) +
+          "&amp;body=" + encodeURIComponent("Para descargarlo en el ordenador: " + pagina) + "\">Enviarme el enlace por correo</a>");
+      } else {
+        poner("titulo", "Tu descarga ha empezado");
+        poner("texto", nombreApp + " · para Windows 10 y 11. ¿No empieza? <a href=\"" + exe + "\">Descárgalo de nuevo</a>.");
+        poner("archivo", "Está en la carpeta Descargas: <b>" + exe.split("/").pop() + "</b>. Ábrelo con doble clic y sigue los pasos.");
+        if (appDescarga === "matriculas") {
+          poner("paso2", "Arrastra la jornada");
+          poner("paso2b", "Suelta la carpeta con las fotos de hoy, o prueba antes con el lote de ejemplo que trae.");
+          poner("paso3", "Confirma lo dudoso. Tus 30 días de prueba empiezan ahora, sin tarjeta.");
+        }
+        if (publicada) {
+          var marca = "peritolab_descarga_" + appDescarga, ya = false;
+          try { ya = sessionStorage.getItem(marca) === "1"; sessionStorage.setItem(marca, "1"); } catch (e) { ya = false; }
+          if (!ya) {
+            contar(appDescarga === "compresor" ? "w:descarga_compresor" : appDescarga === "conversor" ? "w:descarga_conversor" : "w:descarga");
+            setTimeout(function () { location.href = exe; }, 600);
+          }
+        }
+      }
+    }
+  }
+
+  // El formulario del piloto de talleres: va al servidor, que lo apunta en Gestión como posible cliente «interesado» y
+  // nos avisa por correo. Solo desde la web publicada: en pruebas no se manda nada.
+  var formPiloto = document.getElementById("form-piloto");
+  if (formPiloto) {
+    formPiloto.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var estado = formPiloto.querySelector(".aviso-form"), boton = formPiloto.querySelector('button[type="submit"]');
+      var decir = function (texto, bien, campo) {
+        estado.hidden = false;
+        estado.className = "aviso-form " + (bien ? "ok" : "mal");
+        estado.textContent = texto;
+        if (campo) formPiloto.elements[campo].focus();
+      };
+      var d = {accion: "piloto_taller", acepta: formPiloto.elements.acepta.checked};
+      ["taller", "contacto", "correo", "telefono", "ciudad", "coches", "web"].forEach(function (n) {
+        d[n] = String(formPiloto.elements[n].value || "").trim();
+      });
+      if (!d.taller) return decir("Pon el nombre del taller.", false, "taller");
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(d.correo)) return decir("Revisa el correo: así no podemos escribirte.", false, "correo");
+      if (!d.acepta) return decir("Para apuntarte, marca la casilla de la privacidad.", false, "acepta");
+      if (!publicada) return decir("Vista previa: en la web publicada esto se enviaría.", true);
+      boton.disabled = true;
+      var texto = boton.textContent;
+      boton.textContent = "Enviando…";
+      var acabar = function () { boton.disabled = false; boton.textContent = texto; };
+      fetch(SERVIDOR, {method: "POST", body: JSON.stringify(d), credentials: "omit",
+                       headers: {"Content-Type": "text/plain;charset=utf-8"}})
+        .then(function (r) { return r.json(); })
+        .then(function (r) {
+          acabar();
+          if (!r || !r.ok) throw new Error((r && r.error) || "sin respuesta");
+          formPiloto.reset();
+          decir("¡Recibido! Te escribimos en 48 horas laborables.", true);
+          evento("clic", "piloto");
+        })
+        .catch(function () {
+          acabar();
+          decir("No se ha podido enviar. Escríbenos a contacto.peritolab@gmail.com y te apuntamos.", false);
+        });
     });
   }
 

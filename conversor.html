@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Convertir fotos HEIC a JPG o PDF gratis · PeritoLab Conversor</title>
 <meta name="description" content="Programa gratis para Windows que cambia el formato de las fotos: HEIC a JPG, PNG, WebP, TIFF o un PDF, conservando la fecha y sin subirlas a internet.">
-<meta name="theme-color" content="#0c0b11">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:title" content="PeritoLab Conversor · Convertir fotos de formato, gratis">
 <meta property="og:description" content="HEIC a JPG, PNG, WebP, TIFF o un PDF por carpeta, sin subir las fotos a internet. Gratuito.">
 <meta property="og:type" content="website">
@@ -22,7 +22,7 @@
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png">
-<link rel="stylesheet" href="estilo.css?v=e3a8803bad">
+<link rel="stylesheet" href="estilo.css?v=cacb52398b">
 <script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"PeritoLab Conversor","description":"Programa gratis para Windows que cambia el formato de las fotos: HEIC a JPG, PNG, WebP, TIFF o un PDF, conservando la fecha y sin subirlas a internet.","applicationCategory":"MultimediaApplication","operatingSystem":"Windows 10, Windows 11","url":"https://peritolab.es/conversor.html","downloadUrl":"https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe","publisher":{"@type":"Organization","name":"PeritoLab"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}
@@ -33,70 +33,49 @@
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <linearGradient id="pl-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8F7BFF"/><stop offset="1" stop-color="#4527C4"/></linearGradient>
-    <linearGradient id="app-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#4527C4"/></linearGradient>
-  </defs>
-  <symbol id="logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="url(#pl-g)"/><path d="M11.5 23V9h5a4.6 4.6 0 0 1 0 9.2h-5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="21.8" cy="22.6" r="1.9" fill="#fff"/></symbol>
-  <symbol id="convicon" viewBox="0 0 64 64"><rect x="2" y="2" width="60" height="60" rx="16" fill="url(#app-g)"/><g fill="none" stroke="#fff" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 27a17 17 0 0 1 30-8"/><path d="M47 11v9h-9"/><path d="M49 37a17 17 0 0 1-30 8"/><path d="M17 53v-9h9"/></g></symbol>
-  <symbol id="arrow" viewBox="0 0 16 16"><path d="M3 8h9.5M8.5 3.5 13 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="down" viewBox="0 0 16 16"><path d="M8 2.5v9M3.8 7.5 8 11.7l4.2-4.2M3 14h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="logo" viewBox="0 0 20 20"><rect width="20" height="20" rx="5.5" fill="#4B3FE0"/><rect x="4" y="7.5" width="12" height="5" rx="1.6" fill="#fff"/><rect x="4" y="7.5" width="3" height="5" rx="1" fill="#C9C4FF"/></symbol>
 </svg>
 
 <a class="skip" href="#contenido">Saltar al contenido</a>
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="./" aria-label="PeritoLab, inicio"><svg aria-hidden="true"><use href="#logo"/></svg>PeritoLab<small>Conversor</small></a>
-    <nav class="nav-links" aria-label="Principal">
-      <a href="#como">Cómo funciona</a>
-      <a href="#funciones">Funciones</a>
-      <a href="#gratis">Gratuito</a>
-      <a href="#preguntas">Preguntas</a>
-      <a href="guias.html">Guías</a>
+    <a class="brand" href="./" aria-label="PeritoLab, inicio"><svg aria-hidden="true" viewBox="0 0 20 20"><use href="#logo"/></svg>PeritoLab</a>
+    <nav class="nav-links" id="menu-principal" aria-label="Principal">
       <a href="matriculas.html">Matrículas</a>
+      <a href="compresor.html">Compresor</a>
+      <a href="conversor.html" aria-current="page">Conversor</a>
+      <a href="talleres.html">Talleres</a>
+      <a href="guias.html">Guías</a>
+      <a href="matriculas.html#precios">Precios</a>
     </nav>
-    <a class="btn btn-light btn-sm" href="https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe">Descargar gratis</a>
+    <a class="btn btn-primary btn-sm" href="descarga.html?app=matriculas">Probar gratis</a>
   </div>
 </header>
 
 <main id="contenido">
 
 <section class="hero">
-  <div class="wrap">
-    <div class="hero-copy">
-      <span class="eyebrow reveal">PeritoLab Conversor · gratuito</span>
-      <h1 class="h-xl grad reveal" style="--d:.08s;margin-top:26px">Las fotos, en el formato que te pidan.</h1>
-      <p class="lead reveal" style="--d:.16s">Arrastra fotos o carpetas y pásalas de HEIC a JPG, a PNG, WebP o TIFF, o júntalas en un PDF por carpeta. Conserva la fecha, los datos y el tamaño de cada foto, a la máxima calidad, y si quieres quita el GPS o les pone un nombre común. Gratuito y sin límite de fotos.</p>
-      <div class="hero-cta reveal" style="--d:.24s">
-        <a class="btn btn-primary" href="https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe"><svg aria-hidden="true"><use href="#down"/></svg> Descargar gratis</a>
+  <div class="wrap hero-split">
+    <div>
+      <span class="eyebrow reveal">PeritoLab Conversor · gratis</span>
+      <h1 class="h-xl reveal" style="--d:.06s">Las fotos, en el formato que te pidan.</h1>
+      <p class="lead reveal" style="--d:.12s">Arrastra fotos o carpetas y pásalas de HEIC a JPG, a PNG, WebP o TIFF, o júntalas en un PDF por carpeta. Conserva la fecha, los datos y el tamaño de cada foto, a la máxima calidad, y si quieres quita el GPS o les pone un nombre común. Gratuito y sin límite de fotos.</p>
+      <div class="hero-cta reveal" style="--d:.18s">
+        <a class="btn btn-primary" href="descarga.html?app=conversor">Descargar gratis</a>
         <a class="btn btn-ghost" href="#como">Ver cómo funciona</a>
       </div>
-      <p class="hero-note reveal" style="--d:.3s">Para Windows 10 y 11 · gratuito y sin anuncios · procesado local</p>
+      <p class="hero-note reveal" style="--d:.22s">Windows 10 y 11 · gratuito y sin anuncios · procesado local</p>
     </div>
-
-    <div class="stage play-on-view" aria-hidden="true">
-      <div class="window">
-        <div class="win-bar"><svg><use href="#convicon"/></svg>PeritoLab Conversor
-          <div class="ctrl"><span><svg viewBox="0 0 10 10"><path d="M1 5h8" stroke="currentColor"/></svg></span><span><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" fill="none" stroke="currentColor"/></svg></span><span><svg viewBox="0 0 10 10"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7" stroke="currentColor"/></svg></span></div>
-        </div>
-        <div class="win-main">
-          <div class="win-head">
-            <div><p class="win-title">Siniestro 4417 · 248 fotos HEIC</p><p>A JPG · con su fecha · sin GPS · los originales no se tocan</p></div>
-            <span class="win-btn">Convertir 248 fotos a JPG</span>
-          </div>
-          <div class="win-progress"><span></span></div>
-          <div class="win-stats">
-            <div class="win-stat"><b>JPG</b><span>lo acepta cualquier portal</span></div>
-            <div class="win-stat"><b>248</b><span>fotos con su fecha</span></div>
-            <div class="win-stat"><b>0</b><span>originales tocados</span></div>
-          </div>
-          <div class="rows">
-            <div class="row" style="--i:0"><span class="folder">Siniestro 4417</span><div class="thumbs"><i style="--a:#e4e7f0;--b:#9097b1"></i><i style="--a:#d7dae6;--b:#7d86a3"></i><i style="--a:#e9e3dc;--b:#a69a8d"></i><i style="--a:#dfe6ea;--b:#8ea0ac"></i><i style="--a:#e3e3ec;--b:#a0a3b7"></i></div><span class="meta">HEIC → JPG · 248 fotos</span><span class="tag ok">Hecha</span></div>
-            <div class="row" style="--i:1"><span class="folder">Siniestro 4418</span><div class="thumbs"><i style="--a:#e7e2ea;--b:#9a8fa6"></i><i style="--a:#dde3ee;--b:#8592ad"></i><i style="--a:#e6e6e6;--b:#9b9b9b"></i><i style="--a:#e1e8e4;--b:#8ea69a"></i><i style="--a:#e9e6df;--b:#aaa08d"></i></div><span class="meta">131 fotos → 1 PDF</span><span class="tag ok">Hecha</span></div>
-            <div class="row" style="--i:2"><span class="folder">Logotipos</span><div class="thumbs"><i style="--a:#dfe2ec;--b:#7e88a8"></i><i style="--a:#e8e8ee;--b:#a2a4b6"></i><i style="--a:#e2e6e9;--b:#8f9ba5"></i></div><span class="meta">PNG → WebP · 12 imágenes</span><span class="tag ok">Hecha</span></div>
-          </div>
-        </div>
+    <div class="app-win reveal" style="--d:.12s" role="img" aria-label="PeritoLab Conversor: 248 fotos HEIC pasadas a JPG con su fecha y sin GPS, sin tocar los originales">
+      <div class="app-bar"><svg aria-hidden="true" viewBox="0 0 20 20"><use href="#logo"/></svg><strong>PeritoLab</strong><span>Conversor</span></div>
+      <div class="app-main">
+        <p class="app-title">Siniestro 4417 · 248 fotos HEIC</p>
+        <p class="app-sub">A JPG · con su fecha · sin GPS · los originales no se tocan</p>
+        <div class="barra ok"><i></i></div>
+        <div class="app-stats"><div class="app-stat ok"><b>JPG</b><span>lo acepta cualquier portal</span></div><div class="app-stat"><b>248</b><span>fotos con su fecha</span></div><div class="app-stat"><b>0</b><span>originales tocados</span></div></div>
+        <div class="app-row"><i class="foto"></i><span class="plate">IMG_4581.HEIC</span><span class="info">→ IMG_4581.jpg · 12/10/2026 09:14</span><span class="chip chip-ok">Hecho</span></div>
+        <div class="app-row"><i class="foto"></i><span class="plate">Siniestro 4417</span><span class="info">→ Siniestro 4417.pdf · 248 páginas</span><span class="chip chip-ok">Hecho</span></div>
       </div>
     </div>
   </div>
@@ -104,26 +83,28 @@
 
 <section class="block" id="como">
   <div class="wrap">
-    <div class="sec-head center">
+    <div class="sec-head">
       <span class="eyebrow reveal">Cómo funciona</span>
-      <h2 class="h-l reveal" style="--d:.06s">Del formato que tienes al que te piden, en tres pasos.</h2>
+      <h2 class="h-l reveal" style="--d:.06s">Del formato que tienes al que te piden, en tres pasos</h2>
       <p class="lead reveal" style="--d:.12s">Todo el procesado se hace en tu ordenador: no se sube ninguna foto.</p>
     </div>
-    <div class="steps">
-      <div class="card step reveal"><span class="num">01</span><span class="line"></span><h3>Arrastra fotos o carpetas</h3><p>HEIC del iPhone, JPG, PNG, WebP o TIFF, con todas sus subcarpetas. También desde el botón derecho del Explorador.</p></div>
-      <div class="card step reveal" style="--d:.1s"><span class="num">02</span><span class="line"></span><h3>Elige el formato</h3><p>JPG, PNG, WebP, HEIC, TIFF o PDF, y las opciones: conservar los datos, quitar el GPS o renombrar.</p></div>
-      <div class="card step reveal" style="--d:.2s"><span class="num">03</span><span class="line"></span><h3>Listo, al lado</h3><p>Lo convertido se guarda en una carpeta nueva junto a la original, con la misma estructura. Los originales no se modifican.</p></div>
-    </div>
+    <ol class="steps">
+      <li class="card step reveal"><span class="num">01</span><h3>Arrastra fotos o carpetas</h3><p>HEIC del iPhone, JPG, PNG, WebP o TIFF, con todas sus subcarpetas. También desde el botón derecho del Explorador.</p></li>
+      <li class="card step reveal" style="--d:.08s"><span class="num">02</span><h3>Elige el formato</h3><p>JPG, PNG, WebP, HEIC, TIFF o PDF, y las opciones: conservar los datos, quitar el GPS o renombrar.</p></li>
+      <li class="card step reveal" style="--d:.16s"><span class="num">03</span><h3>Listo, al lado</h3><p>Lo convertido se guarda en una carpeta nueva junto a la original, con la misma estructura. Los originales no se modifican.</p></li>
+    </ol>
+    <figure class="ilus ilus-ancha reveal">
+      <picture><source media="(max-width: 700px)" srcset="img/fotos-heic-iphone-a-jpg-movil.svg" width="640" height="1100"><img src="img/fotos-heic-iphone-a-jpg.svg" width="1200" height="630" loading="lazy" decoding="async" alt="Fotos HEIC del iPhone convertidas a JPG en el propio ordenador y subidas a la plataforma de peritación de la aseguradora"></picture>
+      <figcaption>Del HEIC del iPhone al JPG que acepta cualquier plataforma, sin subir las fotos a ninguna web.</figcaption>
+    </figure>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<section class="block" id="funciones" style="padding-top:110px">
+<section class="block" id="funciones">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow reveal">Funciones</span>
-      <h2 class="h-l reveal" style="--d:.06s">Lo que hace falta para cambiar el formato de un reportaje.</h2>
+      <h2 class="h-l reveal" style="--d:.06s">Lo que hace falta para cambiar el formato de un reportaje</h2>
       <p class="lead reveal" style="--d:.12s">Para peritos, talleres y tramitadores que reciben fotos en un formato y las tienen que entregar en otro.</p>
     </div>
     <div class="grid-3">
@@ -137,23 +118,12 @@
   </div>
 </section>
 
-<section class="block" style="padding-top:40px">
+<section class="block" id="gratis">
   <div class="wrap">
-    <div class="vault reveal">
-      <div class="shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.5v2.5"/></svg></div>
-      <h2 class="h-l grad">Gratuito. Y tus fotos, en tu ordenador.</h2>
-      <p class="lead" style="margin-inline:auto">Sin anuncios, sin tarjeta y sin límite de fotos; solo se pide un correo al abrirlo por primera vez. Nada de webs de conversión a las que subir las fotos del siniestro: todo el procesado es local.</p>
-      <div class="points"><span>Gratuito, sin límite de fotos</span><span>Funciona sin conexión</span><span>Originales intactos</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="block center" id="gratis">
-  <div class="wrap">
-    <div class="sec-head center" style="margin-bottom:0">
+    <div class="sec-head">
       <span class="eyebrow reveal">Gratuito</span>
-      <h2 class="h-l reveal" style="--d:.06s">Convertir es gratuito. Clasificar por matrícula, cuando lo necesites.</h2>
-      <p class="lead reveal" style="--d:.12s">El Conversor cambia el formato y el <a href="compresor.html">Compresor</a> deja las fotos ligeras, los dos gratis. Si además quieres que el reportaje de cada vehículo acabe en su carpeta, eso lo hace PeritoLab Matrículas.</p>
+      <h2 class="h-l reveal" style="--d:.06s">Convertir es gratis. Clasificar por matrícula, cuando lo necesites.</h2>
+      <p class="lead reveal" style="--d:.12s">Sin anuncios, sin tarjeta y sin límite de fotos; solo se pide un correo al abrirlo por primera vez. Nada de webs de conversión a las que subir las fotos del siniestro. El Conversor cambia el formato y el <a href="compresor.html">Compresor</a> deja las fotos ligeras; si además quieres una carpeta por vehículo, eso lo hace PeritoLab Matrículas.</p>
     </div>
     <div class="plans two">
       <div class="card plan featured reveal">
@@ -161,23 +131,23 @@
         <h3>PeritoLab Conversor</h3><p class="for">Para entregar las fotos en otro formato</p>
         <div class="price"><b>0 €</b><span>sin coste</span></div><p class="saving">sin tarjeta y sin anuncios</p>
         <ul><li>JPG, PNG, WebP, HEIC, TIFF y PDF</li><li>Fecha y datos intactos</li><li>Sin GPS y renombrar</li><li>Subcarpetas a cualquier nivel</li></ul>
-        <a class="btn btn-primary btn-block" href="https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe">Descargar gratis</a>
+        <a class="btn btn-primary btn-block" href="descarga.html?app=conversor">Descargar gratis</a>
       </div>
       <div class="card plan reveal" style="--d:.06s">
         <h3>PeritoLab Matrículas</h3><p class="for">Para clasificar el reportaje de cada vehículo</p>
         <div class="price"><b>29,95 €</b><span>/mes</span></div><p class="saving">desde · 30 días gratis, sin tarjeta</p>
-        <ul><li>Reconocimiento de matrículas</li><li>Una carpeta por vehículo</li><li>Reportaje fotográfico en PDF</li><li>Compresión de fotos incluida</li></ul>
+        <ul><li>Reconocimiento de matrículas</li><li>Una carpeta por vehículo</li><li>Reportaje fotográfico en PDF</li><li>Conversión y compresión incluidas</li></ul>
         <a class="btn btn-ghost btn-block" href="matriculas.html">Conocer Matrículas</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="block" id="preguntas" style="padding-top:40px">
+<section class="block" id="preguntas">
   <div class="wrap">
-    <div class="sec-head center">
+    <div class="sec-head">
       <span class="eyebrow reveal">Preguntas frecuentes</span>
-      <h2 class="h-l reveal" style="--d:.06s">Lo que nos suelen preguntar.</h2>
+      <h2 class="h-l reveal" style="--d:.06s">Lo que nos suelen preguntar</h2>
     </div>
     <div class="faq reveal">
       <details><summary>¿Es gratuito de verdad?<i aria-hidden="true"></i></summary><div class="answer"><p>Sí, sin límite de fotos, sin tarjeta y sin anuncios. Es nuestra forma de que conozcas PeritoLab.</p></div></details>
@@ -192,15 +162,17 @@
   </div>
 </section>
 
-<section class="final">
+<section class="block" id="contacto">
   <div class="wrap">
-    <span class="eyebrow reveal">Gratuito</span>
-    <h2 class="h-l grad reveal" style="--d:.06s;margin-top:18px">Las fotos del siniestro,<br>en el formato que te pidan.</h2>
-    <div class="hero-cta reveal" style="--d:.14s">
-      <a class="btn btn-primary" href="https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe"><svg aria-hidden="true"><use href="#down"/></svg> Descargar gratis</a>
-      <a class="btn btn-ghost" href="mailto:contacto.peritolab@gmail.com">Escríbenos</a>
+    <div class="card final reveal">
+      <h2 class="h-l">Las fotos del siniestro, en el formato que te pidan</h2>
+      <p class="lead">Gratuito, sin anuncios y sin subir las fotos a ninguna web.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="descarga.html?app=conversor">Descargar gratis</a>
+        <a class="btn btn-ghost" href="mailto:contacto.peritolab@gmail.com?subject=Demo%20de%20PeritoLab%20Matr%C3%ADculas&body=Hola%2C%20me%20gustar%C3%ADa%20ver%20una%20demo%20de%2015%20minutos.">Pedir una demo de 15 min</a>
+      </div>
+      <p class="nota">¿Dudas? Escríbenos a <a href="mailto:contacto.peritolab@gmail.com">contacto.peritolab@gmail.com</a></p>
     </div>
-    <p class="hero-note reveal" style="--d:.2s">Para Windows 10 y 11 · gratuito y sin anuncios · procesado local</p>
   </div>
 </section>
 
@@ -210,22 +182,21 @@
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <a class="brand" href="./"><svg aria-hidden="true"><use href="#logo"/></svg>PeritoLab</a>
+        <a class="brand" href="./"><svg aria-hidden="true" viewBox="0 0 20 20"><use href="#logo"/></svg>PeritoLab</a>
         <p class="tagline">Software para peritos y gabinetes periciales. Desarrollado en España.</p>
+        <a href="mailto:contacto.peritolab@gmail.com">contacto.peritolab@gmail.com</a>
       </div>
-      <div class="foot-cols">
-        <div><h2>Conversor</h2><a href="#como">Cómo funciona</a><a href="#preguntas">Preguntas</a><a href="https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe">Descargar</a></div>
-        <div><h2>PeritoLab</h2><a href="./">Inicio</a><a href="matriculas.html">Matrículas</a><a href="compresor.html">Compresor (gratis)</a><a href="guias.html">Guías para peritos</a><a href="mailto:contacto.peritolab@gmail.com">Contacto</a></div>
-        <div><h2>Legal</h2><a href="aviso-legal.html">Aviso legal</a><a href="condiciones.html">Condiciones</a><a href="privacidad.html">Privacidad</a><a href="cookies.html" data-cookies>Cookies</a></div>
-      </div>
+      <div><h2>Herramientas</h2><a href="matriculas.html">PeritoLab Matrículas</a><a href="compresor.html">Compresor · gratis</a><a href="conversor.html">Conversor · gratis</a><a href="matriculas.html#precios">Precios</a><a href="descarga.html?app=matriculas">Descargar</a></div>
+      <div><h2>PeritoLab</h2><a href="guia-caso-gpfial.html">Caso real: GPFIAL</a><a href="guias.html">Guías para peritos</a><a href="talleres.html">Talleres · piloto</a><a href="mailto:contacto.peritolab@gmail.com?subject=Demo%20de%20PeritoLab%20Matr%C3%ADculas&body=Hola%2C%20me%20gustar%C3%ADa%20ver%20una%20demo%20de%2015%20minutos.">Pedir una demo</a></div>
+      <div><h2>Legal</h2><a href="aviso-legal.html">Aviso legal</a><a href="condiciones.html">Condiciones</a><a href="privacidad.html">Privacidad</a><a href="cookies.html" data-cookies>Cookies</a></div>
     </div>
     <div class="foot-legal">
-      <span>© <span data-year-now>2026</span> PeritoLab</span>
+      <span>© <span data-year-now>2026</span> PeritoLab · Desarrollado en España</span>
       <a href="mailto:contacto.peritolab@gmail.com">contacto.peritolab@gmail.com</a>
     </div>
   </div>
 </footer>
 
-<script src="web.js?v=3668e936b2"></script>
+<script src="web.js?v=66b26f1a70"></script>
 </body>
 </html>

@@ -22,7 +22,7 @@
 <link rel="icon" href="favicon.ico?v=8cffac24c8" sizes="48x48">
 <link rel="icon" href="favicon.svg?v=2ae832b8a8" type="image/svg+xml">
 <link rel="icon" href="favicon-192.png?v=1e84f2e731" sizes="192x192" type="image/png">
-<link rel="stylesheet" href="estilo.css?v=cacb52398b">
+<link rel="stylesheet" href="estilo.css?v=5f7140186c">
 <script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"PeritoLab Conversor","description":"Programa gratis para Windows que cambia el formato de las fotos: HEIC a JPG, PNG, WebP, TIFF o un PDF, conservando la fecha y sin subirlas a internet.","applicationCategory":"MultimediaApplication","operatingSystem":"Windows 10, Windows 11","url":"https://peritolab.es/conversor.html","downloadUrl":"https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe","publisher":{"@type":"Organization","name":"PeritoLab"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}
@@ -74,8 +74,8 @@
         <p class="app-sub">A JPG · con su fecha · sin GPS · los originales no se tocan</p>
         <div class="barra ok"><i></i></div>
         <div class="app-stats"><div class="app-stat ok"><b>JPG</b><span>lo acepta cualquier portal</span></div><div class="app-stat"><b>248</b><span>fotos con su fecha</span></div><div class="app-stat"><b>0</b><span>originales tocados</span></div></div>
-        <div class="app-row"><i class="foto"></i><span class="plate">IMG_4581.HEIC</span><span class="info">→ IMG_4581.jpg · 12/10/2026 09:14</span><span class="chip chip-ok">Hecho</span></div>
-        <div class="app-row"><i class="foto"></i><span class="plate">Siniestro 4417</span><span class="info">→ Siniestro 4417.pdf · 248 páginas</span><span class="chip chip-ok">Hecho</span></div>
+        <div class="app-row"><img class="foto" src="img/fotos/8813LDF-cuentakm.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""><span class="plate">IMG_4581.HEIC</span><span class="info">→ IMG_4581.jpg · 12/10/2026 09:14</span><span class="chip chip-ok">Hecho</span></div>
+        <div class="app-row"><img class="foto" src="img/fotos/1460KTN-detras-calle.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""><span class="plate">Siniestro 4417</span><span class="info">→ Siniestro 4417.pdf · 248 páginas</span><span class="chip chip-ok">Hecho</span></div>
       </div>
     </div>
   </div>
@@ -114,6 +114,27 @@
       <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><path d="M4 4l16 16"/></svg></div><h3>Sin geolocalización</h3><p>Si lo marcas, elimina las coordenadas GPS de las fotos. La fecha y la hora se conservan.</p></div>
       <div class="card reveal" style="--d:.08s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h6v6M20 10h-6V4"/><path d="M14 10l6.5-6.5M3.5 20.5L10 14"/></svg></div><h3>Renombrar en bloque</h3><p>Ponles a todas un nombre común numerado: «Siniestro 2026-0412 (1).jpg», «(2)»…</p></div>
       <div class="card reveal" style="--d:.16s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.4-3.1 8.2-7.5 9.5-4.4-1.3-7.5-5.1-7.5-9.5V6z"/><path d="M8.8 12.2l2.2 2.2 4.4-4.6"/></svg></div><h3>Originales intactos</h3><p>Lo convertido va a una carpeta nueva al lado, con las mismas subcarpetas. Los originales no se modifican.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="pdf">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow reveal">Un PDF por carpeta</span>
+      <h2 class="h-l reveal" style="--d:.06s">El reportaje entero, en un solo archivo</h2>
+      <p class="lead reveal" style="--d:.12s">Elige «PDF» y las fotos de cada carpeta se juntan en un documento, listo para adjuntar o imprimir.</p>
+      <ul class="checks reveal" style="--d:.18s">
+        <li><span><b>Una foto por página,</b> en A4 vertical u horizontal según la foto.</span></li>
+        <li><span><b>En orden de nombre,</b> como están en la carpeta.</span></li>
+        <li><span><b>Un PDF por carpeta:</b> con varias carpetas, uno de cada.</span></li>
+      </ul>
+    </div>
+    <div class="pdf-escena reveal" style="--d:.1s" role="img" aria-label="Las fotos de la carpeta Siniestro 4417 juntas en un PDF, una foto por página">
+      <div class="pdf-hoja atras"><img src="img/fotos/9047KCV-rueda.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""></div>
+      <div class="pdf-hoja medio"><img src="img/fotos/9047KCV-detras-campa.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""></div>
+      <div class="pdf-hoja delante"><img src="img/fotos/9047KCV-delante-campa.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""><span>1 · IMG_4581.jpg</span></div>
+      <span class="pdf-nombre">Siniestro 4417.pdf · 248 páginas</span>
     </div>
   </div>
 </section>

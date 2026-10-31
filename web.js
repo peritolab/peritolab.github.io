@@ -182,16 +182,17 @@
   // Qué programa baja un enlace: los botones van a «descarga.html?app=…» (o, en esa página, al instalador).
   var appDe = function (href) {
     href = href || "";
-    var m = /descarga\.html\?app=(matriculas|compresor|conversor)\b/.exec(href);
+    var m = /descarga\.html\?app=(matriculas|compresor|conversor|taller)\b/.exec(href);
     if (m) return m[1];
     if (!/-instalador\.exe$/.test(href)) return "";
-    return /PeritoLabCompresor/.test(href) ? "compresor" : /PeritoLabConversor/.test(href) ? "conversor" : "matriculas";
+    return /PeritoLabCompresor/.test(href) ? "compresor" : /PeritoLabConversor/.test(href) ? "conversor" : /PeritoLabTaller/.test(href) ? "taller" : "matriculas";
   };
-  var NOMBRES = {matriculas: "PeritoLab Matrículas", compresor: "PeritoLab Compresor", conversor: "PeritoLab Conversor"};
+  var NOMBRES = {matriculas: "PeritoLab Matrículas", compresor: "PeritoLab Compresor", conversor: "PeritoLab Conversor", taller: "PeritoLab Taller"};
   var INSTALADOR = {
     matriculas: "https://github.com/jositofidigym/organizador-matriculas/releases/latest/download/OrganizadorMatriculas-instalador.exe",
     compresor: "https://github.com/jositofidigym/organizador-matriculas/releases/download/compresor/PeritoLabCompresor-instalador.exe",
-    conversor: "https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe"
+    conversor: "https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe",
+    taller: "https://github.com/jositofidigym/organizador-matriculas/releases/download/taller/PeritoLabTaller-instalador.exe"
   };
   if (movil) {
     var aviso = null;
@@ -313,6 +314,7 @@
     var app = paginaActual === "descarga" ? "" : appDe(href);  // en la de descarga, «otra vez» no es un clic nuevo
     var boton = app === "compresor" ? "descarga_compresor"
       : app === "conversor" ? "descarga_conversor"
+      : app === "taller" ? "descarga_taller"
       : app ? "descarga"
       : /^mailto:/.test(href) && /subject=Demo/.test(href) ? "demo"
       : /^mailto:/.test(href) ? "contacto"
@@ -413,7 +415,7 @@
   // instalarlo (y el aviso azul de Windows). En el móvil no descarga nada: el programa es para Windows. Fuera de la
   // web publicada (pruebas en local) ni descarga ni cuenta.
   if (paginaActual === "descarga") {
-    var appDescarga = (/[?&]app=(matriculas|compresor|conversor)\b/.exec(location.search) || [])[1];
+    var appDescarga = (/[?&]app=(matriculas|compresor|conversor|taller)\b/.exec(location.search) || [])[1];
     var poner = function (clave, html) {
       var el = document.querySelector('[data-descarga="' + clave + '"]');
       if (el) el.innerHTML = html;
@@ -422,7 +424,7 @@
       var nombreApp = NOMBRES[appDescarga], exe = INSTALADOR[appDescarga];
       if (movil) {
         var pagina = location.origin + location.pathname.replace(/[^/]*$/, "") +
-          (appDescarga === "matriculas" ? "matriculas.html" : appDescarga + ".html");
+          (appDescarga === "matriculas" ? "matriculas.html" : appDescarga === "taller" ? "talleres.html" : appDescarga + ".html");
         poner("titulo", nombreApp + " es para Windows");
         poner("texto", "Ábrelo en el ordenador para descargarlo. <a href=\"mailto:?subject=" + encodeURIComponent(nombreApp) +
           "&amp;body=" + encodeURIComponent("Para descargarlo en el ordenador: " + pagina) + "\">Enviarme el enlace por correo</a>");
@@ -435,11 +437,16 @@
           poner("paso2b", "Suelta la carpeta con las fotos de hoy, o prueba antes con el lote de ejemplo que trae.");
           poner("paso3", "Confirma lo dudoso. Tus 30 días de prueba empiezan ahora, sin tarjeta.");
         }
+        if (appDescarga === "taller") {
+          poner("paso2", "Conecta el móvil");
+          poner("paso2b", "El asistente te guía: las fotos que suba el móvil a OneDrive o Drive llegarán solas a la aplicación.");
+          poner("paso3", "Si la descargas durante el programa piloto, la tienes gratis.");
+        }
         if (publicada) {
           var marca = "peritolab_descarga_" + appDescarga, ya = false;
           try { ya = sessionStorage.getItem(marca) === "1"; sessionStorage.setItem(marca, "1"); } catch (e) { ya = false; }
           if (!ya) {
-            contar(appDescarga === "compresor" ? "w:descarga_compresor" : appDescarga === "conversor" ? "w:descarga_conversor" : "w:descarga");
+            contar(appDescarga === "compresor" ? "w:descarga_compresor" : appDescarga === "conversor" ? "w:descarga_conversor" : appDescarga === "taller" ? "w:descarga_taller" : "w:descarga");
             setTimeout(function () { location.href = exe; }, 600);
           }
         }

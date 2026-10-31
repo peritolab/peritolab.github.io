@@ -347,6 +347,9 @@ a.pill:hover { color: var(--texto); border-color: #D3D2CC; }
 
 .split > .pdf-escena { display: block; }
 
+/* Las capturas de PeritoLab Taller. */
+.captura { display: block; width: 100%; height: auto; border: 1px solid var(--borde); border-radius: 12px; box-shadow: var(--sombra); }
+
 /* Las páginas del PDF de una carpeta (Conversor). */
 .pdf-escena { position: relative; width: 100%; max-width: 440px; height: 380px; justify-self: center; }
 .pdf-hoja { position: absolute; width: 230px; aspect-ratio: 210 / 297; background: #fff; border: 1px solid var(--borde); border-radius: 6px; box-shadow: 0 18px 40px rgba(17,17,20,.12); padding: 18px 16px; display: flex; flex-direction: column; gap: 10px; }

@@ -194,6 +194,31 @@
     conversor: "https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe",
     taller: "https://github.com/jositofidigym/organizador-matriculas/releases/download/taller/PeritoLabTaller-instalador.exe"
   };
+  // La página de cada programa: es lo que se manda uno mismo para abrirlo en el ordenador.
+  var paginaDe = function (app) {
+    return location.origin + location.pathname.replace(/[^/]*$/, "") + (app === "taller" ? "talleres.html" : app + ".html");
+  };
+  // Copiar el enlace: dentro de Instagram o Facebook el correo muchas veces no se abre.
+  var botonCopiar = function (enlace) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "btn btn-ghost btn-sm";
+    b.textContent = "Copiar enlace";
+    b.addEventListener("click", function () {
+      var hecho = function () { b.textContent = "Enlace copiado"; };
+      var aMano = function () {
+        var t = document.createElement("textarea");
+        t.value = enlace;
+        document.body.appendChild(t);
+        t.select();
+        try { if (document.execCommand("copy")) hecho(); } catch (e) { /* queda el botón como estaba */ }
+        t.remove();
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(enlace).then(hecho, aMano);
+      else aMano();
+    });
+    return b;
+  };
   if (movil) {
     var aviso = null;
     var cerrarAviso = function () { if (aviso) { aviso.remove(); aviso = null; } };
@@ -203,12 +228,10 @@
       if (!app) return;
       ev.preventDefault();
       cerrarAviso();
-      var compresor = app === "compresor", conversor = app === "conversor";
       var nombre = NOMBRES[app];
-      var aqui = location.origin + location.pathname.replace(/[^/]*$/, "") +
-        (compresor ? "compresor.html" : conversor ? "conversor.html" : "matriculas.html");
+      var aqui = paginaDe(app);
       aviso = document.createElement("div");
-      aviso.className = "toast";
+      aviso.className = "toast toast-descarga";
       aviso.setAttribute("role", "dialog");
       aviso.setAttribute("aria-label", "Descargar en el ordenador");
       aviso.innerHTML = "<p><b>" + nombre + " es para Windows.</b> Abre esta página en tu ordenador para descargarlo.</p>" +
@@ -216,7 +239,9 @@
         encodeURIComponent(nombre) + "&body=" + encodeURIComponent("Para descargarlo en el ordenador: " + aqui) +
         '">Enviármelo por correo</a><button type="button" class="btn btn-ghost btn-sm">Cerrar</button></div>';
       document.body.appendChild(aviso);
-      aviso.querySelector("button").addEventListener("click", cerrarAviso);
+      var cerrar = aviso.querySelector("button");
+      cerrar.addEventListener("click", cerrarAviso);
+      cerrar.parentNode.insertBefore(botonCopiar(aqui), cerrar);
     });
   }
 
@@ -255,7 +280,10 @@
     if (!pagina) return;
     var h = "";
     try { h = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) { h = "?"; }
-    var origen = !h ? "directo"
+    // Desde las apps de Instagram y Facebook muchas veces no llega de dónde se viene: lo dicen estas marcas del enlace.
+    var deRedes = /[?&](fbclid|igshid|igsh)=|[?&]utm_source=(instagram|ig|facebook|fb)\b/i.test(location.search);
+    var origen = deRedes ? "redes"
+      : !h ? "directo"
       : (h === location.hostname || /(^|\.)peritolab\.es$|peritolab\.github\.io$|jositofidigym\.github\.io$/.test(h)) ? "interno"
       : /(^|\.)google\./.test(h) ? "google"
       : /(^|\.)bing\.com$/.test(h) ? "bing"
@@ -423,11 +451,15 @@
     if (appDescarga) {
       var nombreApp = NOMBRES[appDescarga], exe = INSTALADOR[appDescarga];
       if (movil) {
-        var pagina = location.origin + location.pathname.replace(/[^/]*$/, "") +
-          (appDescarga === "matriculas" ? "matriculas.html" : appDescarga === "taller" ? "talleres.html" : appDescarga + ".html");
+        var pagina = paginaDe(appDescarga);
         poner("titulo", nombreApp + " es para Windows");
         poner("texto", "Ábrelo en el ordenador para descargarlo. <a href=\"mailto:?subject=" + encodeURIComponent(nombreApp) +
           "&amp;body=" + encodeURIComponent("Para descargarlo en el ordenador: " + pagina) + "\">Enviarme el enlace por correo</a>");
+        var textoDescarga = document.querySelector('[data-descarga="texto"]');
+        if (textoDescarga) textoDescarga.parentNode.appendChild(botonCopiar(pagina));
+        // Los pasos de instalar y «mientras se descarga» no pintan nada aquí: desde el móvil no se baja nada.
+        Array.prototype.forEach.call(document.querySelectorAll("#contenido .pasos-num, #contenido details, #contenido .wrap > .card"),
+          function (el) { el.style.display = "none"; });
       } else {
         poner("titulo", "Tu descarga ha empezado");
         poner("texto", nombreApp + " · para Windows 10 y 11. ¿No empieza? <a href=\"" + exe + "\">Descárgalo de nuevo</a>.");

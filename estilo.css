@@ -2,10 +2,10 @@
    Un único fondo blanco en toda la web: ni secciones oscuras ni modo oscuro (se ignora el del sistema).
    Tipografía Geist (OFL, fuentes/OFL.txt), servida desde la propia web: nada se carga de Google. */
 
-@font-face { font-family: "Geist"; src: url("fuentes/Geist-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Geist"; src: url("fuentes/Geist-Medium.ttf") format("truetype"); font-weight: 500; font-display: swap; }
-@font-face { font-family: "Geist"; src: url("fuentes/Geist-SemiBold.ttf") format("truetype"); font-weight: 600 700; font-display: swap; }
-@font-face { font-family: "Geist Mono"; src: url("fuentes/GeistMono-SemiBold.ttf") format("truetype"); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: "Geist"; src: url("fuentes/Geist-Regular.woff2") format("woff2"), url("fuentes/Geist-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Geist"; src: url("fuentes/Geist-Medium.woff2") format("woff2"), url("fuentes/Geist-Medium.ttf") format("truetype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Geist"; src: url("fuentes/Geist-SemiBold.woff2") format("woff2"), url("fuentes/Geist-SemiBold.ttf") format("truetype"); font-weight: 600 700; font-display: swap; }
+@font-face { font-family: "Geist Mono"; src: url("fuentes/GeistMono-SemiBold.woff2") format("woff2"), url("fuentes/GeistMono-SemiBold.ttf") format("truetype"); font-weight: 400 700; font-display: swap; }
 
 :root {
   color-scheme: light only;
@@ -367,9 +367,9 @@ a.pill:hover { color: var(--texto); border-color: #D3D2CC; }
 /* ---------- Pie ---------- */
 .foot { margin-top: 96px; border-top: 1px solid var(--borde); }
 .foot-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 32px; padding: 48px 0 32px; font-size: 14px; }
-.foot-top > div { display: flex; flex-direction: column; gap: 9px; }
-.foot-top h2 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
-.foot-top a { color: var(--suave); text-decoration: none; }
+.foot-top > div { display: flex; flex-direction: column; gap: 3px; }
+.foot-top h2, .foot-top .foot-tit { font-size: 14px; font-weight: 600; margin: 0 0 8px; color: var(--texto); }
+.foot-top a { color: var(--suave); text-decoration: none; padding: 3px 0; }
 .foot-top a:hover { color: var(--texto); }
 .foot-top .brand { color: var(--texto); }
 .tagline { color: var(--suave); max-width: 260px; }
@@ -450,6 +450,8 @@ details.card p { margin-top: 12px; font-size: 15px; color: var(--suave); }
 /* ---------- Aparecer al bajar (solo con JavaScript y si no se ha pedido menos movimiento) ---------- */
 .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; transition-delay: var(--d, 0s); }
 .js .reveal.in { opacity: 1; transform: none; }
+/* SEO/LCP: lo visible al cargar no empieza invisible (solo se desliza) */
+.js .hero .reveal { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
@@ -472,3 +474,13 @@ details.card p { margin-top: 12px; font-size: 15px; color: var(--suave); }
   .legal { padding-top: 36px; }
   .legal .wrap { font-size: 16.5px; }
 }
+
+/* SEO: la etiqueta de encima del titular forma parte del H1 */
+.h-xl .h1-sup { margin-bottom: 20px; line-height: 1.4; letter-spacing: normal; font-weight: 400; }
+.h-xl .eyebrow.h1-sup { display: block; width: fit-content; letter-spacing: .08em; font-weight: 600; }
+.h-xl .pill.h1-sup { display: flex; width: fit-content; margin: 0 auto 22px; }
+.h-xl .etiqueta-piloto.h1-sup { display: block; width: fit-content; font-weight: 600; }
+/* SEO: fecha visible en las guías y enlaces a todas las guías en portada */
+.guia-fecha { font-size: 14px; color: var(--tenue); margin: -4px 0 22px; }
+.guias-mas { font-size: 15px; color: var(--suave); text-align: center; margin-top: 14px; line-height: 1.7; }
+.guias-mas a { color: var(--suave); }

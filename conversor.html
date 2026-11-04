@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Convertir fotos HEIC a JPG o PDF gratis · PeritoLab Conversor</title>
+<title>Convertir HEIC a JPG o PDF gratis · PeritoLab Conversor</title>
 <meta name="description" content="Programa gratis para Windows que cambia el formato de las fotos: HEIC a JPG, PNG, WebP, TIFF o un PDF, conservando la fecha y sin subirlas a internet.">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:title" content="PeritoLab Conversor · Convertir fotos de formato, gratis">
@@ -22,11 +22,12 @@
 <link rel="icon" href="favicon.ico?v=8cffac24c8" sizes="48x48">
 <link rel="icon" href="favicon.svg?v=2ae832b8a8" type="image/svg+xml">
 <link rel="icon" href="favicon-192.png?v=1e84f2e731" sizes="192x192" type="image/png">
-<link rel="stylesheet" href="estilo.css?v=550be378c9">
+<link rel="preload" href="fuentes/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/Geist-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css?v=7f81c1e4fc">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://peritolab.es/"},{"@type":"ListItem","position":2,"name":"PeritoLab Conversor","item":"https://peritolab.es/conversor.html"}]}</script>
 <script>document.documentElement.classList.add("js")</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PeritoLab Conversor","description":"Programa gratis para Windows que cambia el formato de las fotos: HEIC a JPG, PNG, WebP, TIFF o un PDF, conservando la fecha y sin subirlas a internet.","applicationCategory":"MultimediaApplication","operatingSystem":"Windows 10, Windows 11","url":"https://peritolab.es/conversor.html","downloadUrl":"https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe","publisher":{"@type":"Organization","name":"PeritoLab"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PeritoLab Conversor","description":"Programa gratis para Windows que cambia el formato de las fotos: HEIC a JPG, PNG, WebP, TIFF o un PDF, conservando la fecha y sin subirlas a internet.","applicationCategory":"MultimediaApplication","operatingSystem":"Windows 10, Windows 11","url":"https://peritolab.es/conversor.html","downloadUrl":"https://github.com/jositofidigym/organizador-matriculas/releases/download/conversor/PeritoLabConversor-instalador.exe","publisher":{"@type":"Organization","@id":"https://peritolab.es/#org","name":"PeritoLab","url":"https://peritolab.es/","logo":"https://peritolab.es/favicon-192.png"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://peritolab.es/conversor.html"}}</script>
 <script type="application/ld+json" id="faq">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Es gratuito de verdad?","acceptedAnswer":{"@type":"Answer","text":"Sí, sin límite de fotos, sin tarjeta y sin anuncios. Es nuestra forma de que conozcas PeritoLab."}},{"@type":"Question","name":"¿Por qué pide un correo?","acceptedAnswer":{"@type":"Answer","text":"Para saber quién lo usa y poder avisarte de algo importante del Conversor, como un fallo grave o un cambio en sus condiciones. Las novedades y ofertas solo llegan si marcas la casilla, que es aparte y opcional, y puedes darte de baja con un clic."}},{"@type":"Question","name":"¿A qué formatos convierte?","acceptedAnswer":{"@type":"Answer","text":"A JPG, PNG, WebP, HEIC y TIFF, y también a PDF: un archivo por carpeta, con una foto por página en A4. Lee JPG, PNG, HEIC del iPhone, WebP, TIFF y BMP."}},{"@type":"Question","name":"¿Se pierde la fecha de las fotos?","acceptedAnswer":{"@type":"Answer","text":"No. Se conservan la fecha y hora de captura, el modelo del móvil y el perfil de color, y la orientación se aplica a la imagen. Si quieres, quita también la ubicación GPS."}},{"@type":"Question","name":"¿Se pierde calidad?","acceptedAnswer":{"@type":"Answer","text":"No. El Conversor no comprime: cada foto conserva su tamaño en píxeles y se guarda a la máxima calidad. PNG y TIFF no pierden nada, y en JPG, WebP o HEIC la diferencia con la original no se aprecia. En el PDF, las que ya son JPG van tal cual. Si lo que quieres es que pesen menos, eso lo hace PeritoLab Compresor. Los originales no se modifican."}},{"@type":"Question","name":"¿Necesito conexión a internet?","acceptedAnswer":{"@type":"Answer","text":"Para convertir, no. Solo se conecta para registrar tu correo, comprobar si hay versiones nuevas y enviar estadísticas de uso (cuántas fotos conviertes, nunca las fotos), que puedes desactivar en «Acerca de». El detalle está en la política de privacidad."}},{"@type":"Question","name":"¿En qué ordenadores funciona?","acceptedAnswer":{"@type":"Answer","text":"En Windows 10 y 11 de 64 bits. Se instala en segundos y te avisa de cada versión nueva para actualizarlo con un clic."}},{"@type":"Question","name":"¿Y si las fotos pesan demasiado?","acceptedAnswer":{"@type":"Answer","text":"Para eso está PeritoLab Compresor, también gratuito: fija un peso máximo por foto para las plataformas de las aseguradoras."}}]}
 </script>
@@ -58,8 +59,7 @@
 <section class="hero">
   <div class="wrap hero-split">
     <div>
-      <span class="eyebrow reveal">PeritoLab Conversor · gratis</span>
-      <h1 class="h-xl reveal" style="--d:.06s">Las fotos, en el formato que te pidan.</h1>
+      <h1 class="h-xl reveal" style="--d:.06s"><span class="eyebrow h1-sup">Convertir HEIC a JPG · gratis</span> Las fotos, en el formato que te pidan.</h1>
       <p class="lead reveal" style="--d:.12s">Arrastra fotos o carpetas y pásalas de HEIC a JPG, a PNG, WebP o TIFF, o júntalas en un PDF por carpeta. Conserva la fecha, los datos y el tamaño de cada foto, a la máxima calidad, y si quieres quita el GPS o les pone un nombre común. Gratuito y sin límite de fotos.</p>
       <div class="hero-cta reveal" style="--d:.18s">
         <a class="btn btn-primary" href="descarga.html?app=conversor">Descargar gratis</a>
@@ -74,8 +74,8 @@
         <p class="app-sub">A JPG · con su fecha · sin GPS · los originales no se tocan</p>
         <div class="barra ok"><i></i></div>
         <div class="app-stats"><div class="app-stat ok"><b>JPG</b><span>lo acepta cualquier portal</span></div><div class="app-stat"><b>248</b><span>fotos con su fecha</span></div><div class="app-stat"><b>0</b><span>originales tocados</span></div></div>
-        <div class="app-row"><img class="foto" src="img/fotos/8813LDF-cuentakm.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""><span class="plate">IMG_4581.HEIC</span><span class="info">→ IMG_4581.jpg · 12/10/2026 09:14</span><span class="chip chip-ok">Hecho</span></div>
-        <div class="app-row"><img class="foto" src="img/fotos/1460KTN-detras-calle.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""><span class="plate">Siniestro 4417</span><span class="info">→ Siniestro 4417.pdf · 248 páginas</span><span class="chip chip-ok">Hecho</span></div>
+        <div class="app-row"><img class="foto" src="img/fotos/8813LDF-cuentakm.jpg" width="480" height="360" loading="eager" decoding="async" alt=""><span class="plate">IMG_4581.HEIC</span><span class="info">→ IMG_4581.jpg · 12/10/2026 09:14</span><span class="chip chip-ok">Hecho</span></div>
+        <div class="app-row"><img class="foto" src="img/fotos/1460KTN-detras-calle.jpg" width="480" height="360" loading="eager" decoding="async" alt=""><span class="plate">Siniestro 4417</span><span class="info">→ Siniestro 4417.pdf · 248 páginas</span><span class="chip chip-ok">Hecho</span></div>
       </div>
     </div>
   </div>
@@ -207,9 +207,9 @@
         <p class="tagline">Software para peritos, gabinetes y talleres. Desarrollado en España.</p>
         <a href="mailto:contacto.peritolab@gmail.com">contacto.peritolab@gmail.com</a>
       </div>
-      <div><h2>Herramientas</h2><a href="matriculas.html">PeritoLab Matrículas</a><a href="compresor.html">Compresor · gratis</a><a href="conversor.html">Conversor · gratis</a><a href="talleres.html">PeritoLab Taller</a><a href="matriculas.html#precios">Precios</a><a href="descarga.html?app=matriculas">Descargar</a></div>
-      <div><h2>PeritoLab</h2><a href="guia-caso-gpfial.html">Caso real: GPFIAL</a><a href="guias.html">Guías para peritos</a><a href="mailto:contacto.peritolab@gmail.com?subject=Demo%20de%20PeritoLab%20Matr%C3%ADculas&body=Hola%2C%20me%20gustar%C3%ADa%20ver%20una%20demo%20de%2015%20minutos.">Pedir una demo</a></div>
-      <div><h2>Legal</h2><a href="aviso-legal.html">Aviso legal</a><a href="condiciones.html">Condiciones</a><a href="privacidad.html">Privacidad</a><a href="cookies.html" data-cookies>Cookies</a></div>
+      <div><p class="foot-tit">Herramientas</p><a href="matriculas.html">PeritoLab Matrículas</a><a href="compresor.html">Compresor · gratis</a><a href="conversor.html">Conversor · gratis</a><a href="talleres.html">PeritoLab Taller</a><a href="matriculas.html#precios">Precios</a><a href="descarga.html?app=matriculas">Descargar</a></div>
+      <div><p class="foot-tit">PeritoLab</p><a href="guia-caso-gpfial.html">Caso real: GPFIAL</a><a href="guias.html">Guías para peritos</a><a href="mailto:contacto.peritolab@gmail.com?subject=Demo%20de%20PeritoLab%20Matr%C3%ADculas&body=Hola%2C%20me%20gustar%C3%ADa%20ver%20una%20demo%20de%2015%20minutos.">Pedir una demo</a></div>
+      <div><p class="foot-tit">Legal</p><a href="aviso-legal.html">Aviso legal</a><a href="condiciones.html">Condiciones</a><a href="privacidad.html">Privacidad</a><a href="cookies.html" data-cookies>Cookies</a></div>
     </div>
     <div class="foot-legal">
       <span>© <span data-year-now>2026</span> PeritoLab · Desarrollado en España</span>

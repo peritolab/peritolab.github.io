@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Comprimir fotos de peritaje gratis · PeritoLab Compresor</title>
+<title>Comprimir fotos de peritaje · gratis</title>
 <meta name="description" content="Programa gratuito para Windows que reduce el peso de las fotos de un siniestro: tamaño máximo para la plataforma de la aseguradora, sin GPS y HEIC a JPG.">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:title" content="PeritoLab Compresor · Comprimir fotos de peritaje, gratis">
@@ -22,11 +22,12 @@
 <link rel="icon" href="favicon.ico?v=8cffac24c8" sizes="48x48">
 <link rel="icon" href="favicon.svg?v=2ae832b8a8" type="image/svg+xml">
 <link rel="icon" href="favicon-192.png?v=1e84f2e731" sizes="192x192" type="image/png">
-<link rel="stylesheet" href="estilo.css?v=550be378c9">
+<link rel="preload" href="fuentes/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/Geist-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css?v=7f81c1e4fc">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://peritolab.es/"},{"@type":"ListItem","position":2,"name":"PeritoLab Compresor","item":"https://peritolab.es/compresor.html"}]}</script>
 <script>document.documentElement.classList.add("js")</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PeritoLab Compresor","description":"Programa gratuito para Windows que reduce el peso de las fotos de peritaje: tamaño máximo por foto, eliminación del GPS y conversión de HEIC a JPG.","applicationCategory":"MultimediaApplication","operatingSystem":"Windows 10, Windows 11","url":"https://peritolab.es/compresor.html","downloadUrl":"https://github.com/jositofidigym/organizador-matriculas/releases/download/compresor/PeritoLabCompresor-instalador.exe","publisher":{"@type":"Organization","name":"PeritoLab"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"screenshot":["https://peritolab.es/img/comprimir-fotos-siniestro-antes-despues.svg"]}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PeritoLab Compresor","description":"Programa gratuito para Windows que reduce el peso de las fotos de peritaje: tamaño máximo por foto, eliminación del GPS y conversión de HEIC a JPG.","applicationCategory":"MultimediaApplication","operatingSystem":"Windows 10, Windows 11","url":"https://peritolab.es/compresor.html","downloadUrl":"https://github.com/jositofidigym/organizador-matriculas/releases/download/compresor/PeritoLabCompresor-instalador.exe","publisher":{"@type":"Organization","@id":"https://peritolab.es/#org","name":"PeritoLab","url":"https://peritolab.es/","logo":"https://peritolab.es/favicon-192.png"},"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://peritolab.es/compresor.html"},"screenshot":["https://peritolab.es/img/comprimir-fotos-siniestro-antes-despues.svg"]}</script>
 <script type="application/ld+json" id="faq">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Es gratuito de verdad?","acceptedAnswer":{"@type":"Answer","text":"Sí, sin límite de fotos, sin tarjeta y sin anuncios. Es nuestra forma de que conozcas PeritoLab."}},{"@type":"Question","name":"¿Por qué pide un correo?","acceptedAnswer":{"@type":"Answer","text":"Para saber quién lo usa y poder avisarte de algo importante del Compresor, como un fallo grave o un cambio en sus condiciones. Las novedades y ofertas solo llegan si marcas la casilla, que es aparte y opcional, y puedes darte de baja con un clic."}},{"@type":"Question","name":"¿Se pierde calidad?","acceptedAnswer":{"@type":"Answer","text":"La compresión JPEG elimina información, pero con la calidad recomendada la diferencia no es apreciable a tamaño real. Antes de empezar comparas un recorte original y comprimido a escala 1:1 y eliges la calidad con una barra. Los originales no se modifican."}},{"@type":"Question","name":"¿Funciona con las fotos del iPhone?","acceptedAnswer":{"@type":"Answer","text":"Sí. Las fotos HEIC del iPhone se convierten a JPG (o se mantienen en HEIC comprimidas, si lo prefieres) conservando el perfil de color y la fecha de captura."}},{"@type":"Question","name":"¿Necesito conexión a internet?","acceptedAnswer":{"@type":"Answer","text":"Para comprimir, no. Solo se conecta para registrar tu correo, comprobar si hay versiones nuevas y enviar estadísticas de uso (cuántas fotos comprimes, nunca las fotos), que puedes desactivar en «Acerca de»."}},{"@type":"Question","name":"¿Qué datos recogéis?","acceptedAnswer":{"@type":"Answer","text":"Ninguna de tus fotos. Solo tu correo, la versión que usas y cuántas fotos llevas comprimidas. El detalle está en la política de privacidad."}},{"@type":"Question","name":"¿Sirve para peritos de otros ramos?","acceptedAnswer":{"@type":"Answer","text":"Sí. Funciona con cualquier foto: peritaciones de automóvil, daños, hogar o industriales, y también para talleres y tramitadores que envían fotos a las compañías."}},{"@type":"Question","name":"¿En qué ordenadores funciona?","acceptedAnswer":{"@type":"Answer","text":"En Windows 10 y 11 de 64 bits. Se instala en segundos y te avisa de cada versión nueva para actualizarlo con un clic."}},{"@type":"Question","name":"¿Y si además quiero clasificar las fotos por matrícula?","acceptedAnswer":{"@type":"Answer","text":"Eso lo hace PeritoLab Matrículas: lee la matrícula de cada foto y crea una carpeta por vehículo. Incluye compresión de fotos y se prueba 30 días gratis."}}]}
 </script>
@@ -58,8 +59,7 @@
 <section class="hero">
   <div class="wrap hero-split">
     <div>
-      <span class="eyebrow reveal">PeritoLab Compresor · gratis</span>
-      <h1 class="h-xl reveal" style="--d:.06s">Fotos de peritaje ligeras, listas para la aseguradora.</h1>
+      <h1 class="h-xl reveal" style="--d:.06s"><span class="eyebrow h1-sup">Comprimir fotos de peritaje · gratis</span> Fotos de peritaje ligeras, listas para la aseguradora.</h1>
       <p class="lead reveal" style="--d:.12s">Arrastra la carpeta del siniestro y en segundos el reportaje ocupa hasta un 80&nbsp;% menos, sin pérdida apreciable de detalle. Con tamaño máximo por foto para las plataformas con límite de subida, sin GPS y con las HEIC pasadas a JPG. Gratuito y sin límite de fotos.</p>
       <div class="hero-cta reveal" style="--d:.18s">
         <a class="btn btn-primary" href="descarga.html?app=compresor">Descargar gratis</a>
@@ -74,8 +74,8 @@
         <p class="app-sub">Ninguna pasa de 1 MB · sin GPS · HEIC a JPG · los originales no se tocan</p>
         <div class="barra ok"><i></i></div>
         <div class="app-stats"><div class="app-stat ok"><b>384 MB</b><span>en vez de 1,6 GB</span></div><div class="app-stat"><b>76 %</b><span>menos</span></div><div class="app-stat"><b>0</b><span>originales tocados</span></div></div>
-        <div class="app-row"><img class="foto" src="img/fotos/3184JRW-dano.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""><span class="plate">Siniestro 4417</span><span class="info">248 fotos · 612 MB → 148 MB</span><span class="chip chip-ok">Hecho</span></div>
-        <div class="app-row"><img class="foto" src="img/fotos/9047KCV-lado-campa.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""><span class="plate">Siniestro 4418</span><span class="info">131 fotos · 344 MB → 82 MB</span><span class="chip chip-ok">Hecho</span></div>
+        <div class="app-row"><img class="foto" src="img/fotos/3184JRW-dano.jpg" width="480" height="360" loading="eager" decoding="async" alt=""><span class="plate">Siniestro 4417</span><span class="info">248 fotos · 612 MB → 148 MB</span><span class="chip chip-ok">Hecho</span></div>
+        <div class="app-row"><img class="foto" src="img/fotos/9047KCV-lado-campa.jpg" width="480" height="360" loading="eager" decoding="async" alt=""><span class="plate">Siniestro 4418</span><span class="info">131 fotos · 344 MB → 82 MB</span><span class="chip chip-ok">Hecho</span></div>
       </div>
     </div>
   </div>
@@ -242,9 +242,9 @@
         <p class="tagline">Software para peritos, gabinetes y talleres. Desarrollado en España.</p>
         <a href="mailto:contacto.peritolab@gmail.com">contacto.peritolab@gmail.com</a>
       </div>
-      <div><h2>Herramientas</h2><a href="matriculas.html">PeritoLab Matrículas</a><a href="compresor.html">Compresor · gratis</a><a href="conversor.html">Conversor · gratis</a><a href="talleres.html">PeritoLab Taller</a><a href="matriculas.html#precios">Precios</a><a href="descarga.html?app=matriculas">Descargar</a></div>
-      <div><h2>PeritoLab</h2><a href="guia-caso-gpfial.html">Caso real: GPFIAL</a><a href="guias.html">Guías para peritos</a><a href="mailto:contacto.peritolab@gmail.com?subject=Demo%20de%20PeritoLab%20Matr%C3%ADculas&body=Hola%2C%20me%20gustar%C3%ADa%20ver%20una%20demo%20de%2015%20minutos.">Pedir una demo</a></div>
-      <div><h2>Legal</h2><a href="aviso-legal.html">Aviso legal</a><a href="condiciones.html">Condiciones</a><a href="privacidad.html">Privacidad</a><a href="cookies.html" data-cookies>Cookies</a></div>
+      <div><p class="foot-tit">Herramientas</p><a href="matriculas.html">PeritoLab Matrículas</a><a href="compresor.html">Compresor · gratis</a><a href="conversor.html">Conversor · gratis</a><a href="talleres.html">PeritoLab Taller</a><a href="matriculas.html#precios">Precios</a><a href="descarga.html?app=matriculas">Descargar</a></div>
+      <div><p class="foot-tit">PeritoLab</p><a href="guia-caso-gpfial.html">Caso real: GPFIAL</a><a href="guias.html">Guías para peritos</a><a href="mailto:contacto.peritolab@gmail.com?subject=Demo%20de%20PeritoLab%20Matr%C3%ADculas&body=Hola%2C%20me%20gustar%C3%ADa%20ver%20una%20demo%20de%2015%20minutos.">Pedir una demo</a></div>
+      <div><p class="foot-tit">Legal</p><a href="aviso-legal.html">Aviso legal</a><a href="condiciones.html">Condiciones</a><a href="privacidad.html">Privacidad</a><a href="cookies.html" data-cookies>Cookies</a></div>
     </div>
     <div class="foot-legal">
       <span>© <span data-year-now>2026</span> PeritoLab · Desarrollado en España</span>

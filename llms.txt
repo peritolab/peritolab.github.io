@@ -1,0 +1,28 @@
+# PeritoLab
+
+> Software para Windows para peritos de automóvil, gabinetes periciales y talleres, desarrollado en España. Lee la matrícula de cada foto, clasifica el reportaje fotográfico en una carpeta por vehículo y prepara las fotos para la plataforma de la aseguradora. Todo se procesa en el propio ordenador: las fotos no se suben a ningún servidor.
+
+Datos clave: Windows 10 y 11 (64 bits). PeritoLab Matrículas tiene 30 días de prueba sin tarjeta y planes por ordenador desde 29,95 €/mes (impuestos incluidos, sin permanencia). PeritoLab Compresor y PeritoLab Conversor son gratis. Validado con 56.963 fotos reales de peritaje de 1.866 vehículos del gabinete GPFIAL (Canarias). Contacto: contacto.peritolab@gmail.com
+
+## Programas
+
+- [PeritoLab Matrículas](https://peritolab.es/matriculas.html): clasifica las fotos de peritaje por matrícula, crea el reportaje en PDF y muestra la actividad del gabinete. Incluye precios.
+- [PeritoLab Compresor](https://peritolab.es/compresor.html): gratis; reduce el peso de las fotos de un siniestro, quita el GPS y pasa de HEIC a JPG.
+- [PeritoLab Conversor](https://peritolab.es/conversor.html): gratis; convierte HEIC a JPG, PNG, WebP, TIFF o PDF conservando la fecha.
+- [PeritoLab Taller](https://peritolab.es/talleres.html): recepción de vehículos en talleres con fotos por matrícula y hoja firmada por el cliente (programa piloto).
+
+## Guías
+
+- [Cómo hacer el reportaje fotográfico de un informe pericial](https://peritolab.es/guia-reportaje-fotografico-pericial.html)
+- [Qué fotos hacer en un peritaje de automóvil](https://peritolab.es/guia-fotos-peritaje-automovil.html)
+- [Cómo organizar las fotos de un peritaje por vehículo](https://peritolab.es/guia-organizar-fotos-peritaje.html)
+- [Cómo reducir el tamaño de las fotos para la aseguradora](https://peritolab.es/guia-reducir-tamano-fotos.html)
+- [Fotos HEIC del iPhone en peritaje: cómo pasarlas a JPG](https://peritolab.es/guia-fotos-heic-iphone.html)
+- [Programa para las fotos del peritaje: qué mirar antes de elegirlo](https://peritolab.es/guia-elegir-programa-fotos-peritaje.html)
+- [Caso real: cómo GPFIAL organiza miles de fotos de peritaje al año](https://peritolab.es/guia-caso-gpfial.html)
+
+## Legal
+
+- [Aviso legal](https://peritolab.es/aviso-legal.html)
+- [Condiciones de uso](https://peritolab.es/condiciones.html)
+- [Política de privacidad](https://peritolab.es/privacidad.html)

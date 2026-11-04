@@ -1,4 +1,22 @@
+# PeritoLab · peritolab.es
 User-agent: *
+Allow: /
+
+# Buscadores con IA y asistentes: acceso permitido para que puedan citar la web
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+
+# Entrenamiento de modelos de IA: permitido (más presencia de la marca en sus respuestas).
+# Para no participar, cambia "Allow: /" por "Disallow: /" en este bloque.
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://peritolab.es/sitemap.xml

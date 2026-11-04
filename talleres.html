@@ -21,8 +21,11 @@
 <link rel="icon" href="favicon.ico?v=8cffac24c8" sizes="48x48">
 <link rel="icon" href="favicon.svg?v=2ae832b8a8" type="image/svg+xml">
 <link rel="icon" href="favicon-192.png?v=1e84f2e731" sizes="192x192" type="image/png">
-<link rel="stylesheet" href="estilo.css?v=550be378c9">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PeritoLab Taller","description":"Para talleres de chapa y pintura: fotos por matrícula, daños marcados, hoja de recepción firmada y entrega. Gratis si la descargas durante el piloto.","applicationCategory":"BusinessApplication","operatingSystem":"Windows 10, Windows 11","url":"https://peritolab.es/talleres.html","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"PeritoLab","url":"https://peritolab.es/"}}</script>
+<link rel="preload" href="fuentes/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/Geist-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css?v=7f81c1e4fc">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PeritoLab Taller","description":"Para talleres de chapa y pintura: fotos por matrícula, daños marcados, hoja de recepción firmada y entrega. Gratis si la descargas durante el piloto.","applicationCategory":"BusinessApplication","operatingSystem":"Windows 10, Windows 11","url":"https://peritolab.es/talleres.html","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://peritolab.es/talleres.html"},"publisher":{"@type":"Organization","@id":"https://peritolab.es/#org","name":"PeritoLab","url":"https://peritolab.es/","logo":"https://peritolab.es/favicon-192.png"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://peritolab.es/"},{"@type":"ListItem","position":2,"name":"PeritoLab Taller","item":"https://peritolab.es/talleres.html"}]}</script>
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -52,8 +55,7 @@
 <section class="hero">
   <div class="wrap hero-split">
     <div>
-      <span class="etiqueta-piloto reveal">PeritoLab Taller · programa piloto</span>
-      <h1 class="h-xl reveal" style="--d:.06s">«Ese arañazo ya estaba.» Y ahora puedes demostrarlo.</h1>
+      <h1 class="h-xl reveal" style="--d:.06s"><span class="etiqueta-piloto h1-sup">Recepción de vehículos en taller · piloto</span> «Ese arañazo ya estaba.» Y ahora puedes demostrarlo.</h1>
       <p class="lead reveal" style="--d:.12s">Haz las fotos de recepción con el móvil, como siempre. Llegan solas al ordenador del taller, se ordenan por matrícula y salen en una hoja de recepción que firma el cliente.</p>
       <div class="hero-cta reveal" style="--d:.18s">
         <a class="btn btn-primary" href="descarga.html?app=taller">Descargar gratis</a>
@@ -64,7 +66,7 @@
     <div class="hoja reveal" style="--d:.12s" role="img" aria-label="Ejemplo de hoja de recepción: matrícula, kilómetros, combustible, tres fotos con un daño previo marcado y las firmas del cliente y del taller">
       <div class="cab">Hoja de recepción <span>R-2026-0418</span></div>
       <div class="datos"><span><small>Matrícula</small><strong style="font-family:var(--mono)">5512 LMN</strong></span><span><small>Km</small><strong>84.215</strong></span><span><small>Combustible</small><strong>1/2</strong></span></div>
-      <div class="fotos"><img src="img/fotos/5512LMN-delante-taller.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""><img class="marca" src="img/fotos/5512LMN-dano.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""><img src="img/fotos/5512LMN-lado-taller.jpg" width="480" height="360" loading="lazy" decoding="async" alt=""></div>
+      <div class="fotos"><img src="img/fotos/5512LMN-delante-taller.jpg" width="480" height="360" loading="eager" decoding="async" alt=""><img class="marca" src="img/fotos/5512LMN-dano.jpg" width="480" height="360" loading="eager" decoding="async" alt=""><img src="img/fotos/5512LMN-lado-taller.jpg" width="480" height="360" loading="eager" decoding="async" alt=""></div>
       <span style="font-size:11.5px">1. Arañazo en la aleta trasera derecha (foto 2)</span>
       <div class="firmas"><span>Firma del cliente</span><span>Firma del taller</span></div>
     </div>
@@ -222,9 +224,9 @@
         <p class="tagline">Software para peritos, gabinetes y talleres. Desarrollado en España.</p>
         <a href="mailto:contacto.peritolab@gmail.com">contacto.peritolab@gmail.com</a>
       </div>
-      <div><h2>Herramientas</h2><a href="matriculas.html">PeritoLab Matrículas</a><a href="compresor.html">Compresor · gratis</a><a href="conversor.html">Conversor · gratis</a><a href="talleres.html">PeritoLab Taller</a><a href="matriculas.html#precios">Precios</a><a href="descarga.html?app=matriculas">Descargar</a></div>
-      <div><h2>PeritoLab</h2><a href="guia-caso-gpfial.html">Caso real: GPFIAL</a><a href="guias.html">Guías para peritos</a><a href="mailto:contacto.peritolab@gmail.com?subject=Demo%20de%20PeritoLab%20Matr%C3%ADculas&body=Hola%2C%20me%20gustar%C3%ADa%20ver%20una%20demo%20de%2015%20minutos.">Pedir una demo</a></div>
-      <div><h2>Legal</h2><a href="aviso-legal.html">Aviso legal</a><a href="condiciones.html">Condiciones</a><a href="privacidad.html">Privacidad</a><a href="cookies.html" data-cookies>Cookies</a></div>
+      <div><p class="foot-tit">Herramientas</p><a href="matriculas.html">PeritoLab Matrículas</a><a href="compresor.html">Compresor · gratis</a><a href="conversor.html">Conversor · gratis</a><a href="talleres.html">PeritoLab Taller</a><a href="matriculas.html#precios">Precios</a><a href="descarga.html?app=matriculas">Descargar</a></div>
+      <div><p class="foot-tit">PeritoLab</p><a href="guia-caso-gpfial.html">Caso real: GPFIAL</a><a href="guias.html">Guías para peritos</a><a href="mailto:contacto.peritolab@gmail.com?subject=Demo%20de%20PeritoLab%20Matr%C3%ADculas&body=Hola%2C%20me%20gustar%C3%ADa%20ver%20una%20demo%20de%2015%20minutos.">Pedir una demo</a></div>
+      <div><p class="foot-tit">Legal</p><a href="aviso-legal.html">Aviso legal</a><a href="condiciones.html">Condiciones</a><a href="privacidad.html">Privacidad</a><a href="cookies.html" data-cookies>Cookies</a></div>
     </div>
     <div class="foot-legal">
       <span>© <span data-year-now>2026</span> PeritoLab · Desarrollado en España</span>

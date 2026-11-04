@@ -17,6 +17,7 @@ Datos clave: Windows 10 y 11 (64 bits). PeritoLab Matrículas tiene 30 días de 
 - [Qué fotos hacer en un peritaje de automóvil](https://peritolab.es/guia-fotos-peritaje-automovil.html)
 - [Cómo organizar las fotos de un peritaje por vehículo](https://peritolab.es/guia-organizar-fotos-peritaje.html)
 - [Cómo reducir el tamaño de las fotos para la aseguradora](https://peritolab.es/guia-reducir-tamano-fotos.html)
+- [Cómo quitar la ubicación GPS de las fotos antes de enviarlas](https://peritolab.es/guia-quitar-gps-fotos.html)
 - [Fotos HEIC del iPhone en peritaje: cómo pasarlas a JPG](https://peritolab.es/guia-fotos-heic-iphone.html)
 - [Programa para las fotos del peritaje: qué mirar antes de elegirlo](https://peritolab.es/guia-elegir-programa-fotos-peritaje.html)
 - [Caso real: cómo GPFIAL organiza miles de fotos de peritaje al año](https://peritolab.es/guia-caso-gpfial.html)

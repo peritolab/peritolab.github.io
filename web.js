@@ -548,6 +548,43 @@
     pintar();
   }
 
+  // Vídeos: mudos, arrancan al verse y se paran al salir de la pantalla. Con «menos movimiento» se quedan
+  // quietos, con su portada y los controles del navegador. Sin JavaScript, también con controles.
+  Array.prototype.forEach.call(document.querySelectorAll("video[data-auto]"), function (v) {
+    v.muted = true;
+    if (quieto) return;
+    v.controls = false;
+    var pausado = false;
+    var boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "video-pausa";
+    var pintar = function () {
+      boton.setAttribute("aria-label", pausado ? "Reproducir el vídeo" : "Pausar el vídeo");
+      boton.innerHTML = pausado
+        ? '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4.5v11l9-5.5z" fill="currentColor"/></svg>'
+        : '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4h3v12H6zM11 4h3v12h-3z" fill="currentColor"/></svg>';
+    };
+    var jugar = function () {
+      if (pausado) return;
+      var promesa = v.play();
+      if (promesa && promesa.catch) promesa.catch(function () {});
+    };
+    boton.addEventListener("click", function () {
+      pausado = !pausado;
+      if (pausado) v.pause(); else jugar();
+      pintar();
+    });
+    pintar();
+    v.parentNode.appendChild(boton);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (e) { if (e.isIntersecting) jugar(); else v.pause(); });
+      }, { threshold: 0.25 }).observe(v);
+    } else {
+      jugar();
+    }
+  });
+
   var anio = document.querySelector("[data-year-now]");
   if (anio) anio.textContent = String(new Date().getFullYear());
 })();

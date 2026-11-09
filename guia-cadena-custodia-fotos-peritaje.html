@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cadena de custodia de las fotos: huella SHA-256 · PeritoLab</title>
+<meta name="description" content="Qué es la huella SHA-256 de una foto, qué demuestra y qué no, cómo calcularla en Windows sin instalar nada y cómo incluirla en el informe pericial.">
+<meta property="og:title" content="Cadena de custodia de las fotos: huella SHA-256 · PeritoLab">
+<meta property="og:description" content="Qué es la huella SHA-256 de una foto, qué demuestra y qué no, cómo calcularla en Windows sin instalar nada y cómo incluirla en el informe pericial.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://peritolab.es/guia-cadena-custodia-fotos-peritaje.html">
+<meta property="og:site_name" content="PeritoLab">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://peritolab.es/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://peritolab.es/guia-cadena-custodia-fotos-peritaje.html">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2608fa1cd7">
+<link rel="icon" href="favicon.ico?v=8cffac24c8" sizes="48x48">
+<link rel="icon" href="favicon.svg?v=2ae832b8a8" type="image/svg+xml">
+<link rel="icon" href="favicon-192.png?v=1e84f2e731" sizes="192x192" type="image/png">
+<link rel="preload" href="fuentes/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/Geist-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css?v=80fa822686">
+<script>document.documentElement.classList.add("js")</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Cadena de custodia de las fotos del peritaje: la huella SHA-256","description":"Qué es la huella SHA-256 de una foto, qué demuestra y qué no, cómo calcularla en Windows sin instalar nada y cómo incluirla en el informe pericial.","image":["https://peritolab.es/og.png"],"author":{"@type":"Organization","@id":"https://peritolab.es/#org","name":"PeritoLab","url":"https://peritolab.es/"},"publisher":{"@type":"Organization","@id":"https://peritolab.es/#org","name":"PeritoLab","url":"https://peritolab.es/","logo":"https://peritolab.es/favicon-192.png"},"datePublished":"2026-11-09","dateModified":"2026-11-09","mainEntityOfPage":"https://peritolab.es/guia-cadena-custodia-fotos-peritaje.html","inLanguage":"es-ES"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://peritolab.es/"}, {"@type": "ListItem", "position": 2, "name": "Guías", "item": "https://peritolab.es/guias.html"}, {"@type": "ListItem", "position": 3, "name": "Cadena de custodia de las fotos del peritaje: la huella SHA-256", "item": "https://peritolab.es/guia-cadena-custodia-fotos-peritaje.html"}]}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 20 20"><rect width="20" height="20" rx="5.5" fill="#4B3FE0"/><rect x="4" y="7.5" width="12" height="5" rx="1.6" fill="#fff"/><rect x="4" y="7.5" width="3" height="5" rx="1" fill="#C9C4FF"/></symbol>
+</svg>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="PeritoLab, inicio"><svg aria-hidden="true" viewBox="0 0 20 20"><use href="#logo"/></svg>PeritoLab</a>
+    <nav class="nav-links" id="menu-principal" aria-label="Principal">
+      <a href="matriculas.html">Matrículas</a>
+      <a href="compresor.html">Compresor</a>
+      <a href="conversor.html">Conversor</a>
+      <a href="talleres.html">Talleres</a>
+      <a href="guias.html" aria-current="page">Guías</a>
+      <a href="matriculas.html#precios">Precios</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="descarga.html?app=matriculas">Probar gratis</a>
+  </div>
+</header>
+<main class="legal guia" id="contenido">
+<div class="wrap">
+<h1>Cadena de custodia de las fotos del peritaje: la huella SHA-256</h1>
+<p class="guia-fecha">Publicado el <time datetime="2026-11-09">9 de noviembre de 2026</time> · por el equipo de PeritoLab</p>
+<p>Un informe pericial se apoya en sus fotos, y las fotos digitales tienen un punto débil: se pueden cambiar sin que se note. Si el informe acaba en una discusión con la otra compañía, en una reclamación o en un juicio, alguien puede preguntar si las fotos que presentas son las mismas que hiciste el día de la inspección. La forma más sencilla y aceptada de responder es la huella digital de cada archivo, el llamado hash SHA-256. Esta guía explica qué es, qué demuestra y qué no, cómo calcularla en Windows sin instalar nada y cómo incluirla en el informe.</p>
+<h2>Qué es la huella SHA-256 de una foto</h2>
+<p>SHA-256 es un cálculo matemático que se hace sobre el contenido de un archivo y da como resultado una cadena de 64 letras y números, siempre de la misma longitud. Tiene dos propiedades que la hacen útil como prueba:</p>
+<ul><li><strong>El mismo archivo da siempre la misma huella</strong>, en cualquier ordenador y con cualquier programa.</li><li><strong>Si cambia un solo dato del archivo, la huella cambia por completo</strong>: un píxel, la fecha guardada dentro de la foto o un recorte. No hay forma práctica de modificar una foto y conseguir que conserve su huella.</li></ul>
+<p>Por eso, si apuntas la huella de cada foto el día que las descargas del móvil, cualquiera puede comprobar más adelante que siguen siendo exactamente las mismas: basta con volver a calcularla y ver que coincide.</p>
+<h2>Qué demuestra la huella y qué no</h2>
+<p>Conviene no prometer más de la cuenta:</p>
+<ul><li><strong>Sí demuestra</strong> que el archivo no ha cambiado desde el momento en que se calculó la huella.</li><li><strong>No demuestra</strong> cuándo se hizo la foto ni quién la hizo. La fecha y el modelo del móvil van en los datos EXIF de la propia foto, que se pueden editar antes de calcular la huella.</li><li><strong>No dice nada</strong> de lo que pasó con la foto antes de calcularla. Por eso importa el momento: cuanto antes, mejor. Lo ideal es calcularla al pasar las fotos del móvil al ordenador, antes de tocar nada.</li></ul>
+<p>La huella es una pieza de la cadena de custodia, no toda. La completan el resto de cosas que ya haces bien: conservar los originales sin editar, guardar una copia en un sitio seguro y anotar en el informe quién hizo las fotos, cuándo y dónde.</p>
+<h2>Qué cambia la huella y qué no</h2>
+<p>Esto es lo que más confusiones da en el día a día:</p>
+<ul><li><strong>No la cambia</strong> renombrar el archivo, moverlo de carpeta o copiarlo a otro disco: el contenido es el mismo.</li><li><strong>Sí la cambia</strong> cualquier cosa que vuelva a guardar la foto: comprimirla, girarla y guardarla, pasarla de HEIC a JPG, recortarla o <a href="guia-quitar-gps-fotos.html">quitarle la ubicación GPS</a>.</li></ul>
+<p>La consecuencia práctica es importante: la huella hay que calcularla de las fotos que vas a conservar como prueba, y esas fotos no se tocan. Las copias que comprimes para la plataforma de la aseguradora tendrán otra huella, y es normal. Lo que puedas defender son los originales.</p>
+<h2>Cómo calcularla en Windows, sin instalar nada</h2>
+<p>Windows trae dos formas de hacerlo.</p>
+<p><strong>Con el símbolo del sistema</strong>, foto a foto:</p>
+<p>1. Abre la carpeta de las fotos en el Explorador, escribe `cmd` en la barra de direcciones y pulsa Intro. 2. Escribe `certutil -hashfile "IMG_2214.jpg" SHA256` con el nombre de tu foto. 3. La línea de 64 caracteres que aparece es su huella.</p>
+<p><strong>Con PowerShell</strong>, para toda la carpeta de una vez:</p>
+<p>1. En la misma carpeta, escribe `powershell` en la barra de direcciones y pulsa Intro. 2. Escribe `Get-FileHash *.jpg` y pulsa Intro. 3. Sale una lista con la huella de cada foto. Para guardarla en un archivo de texto: `Get-FileHash *.jpg | Format-List &gt; huellas.txt`.</p>
+<p>Funciona igual con cualquier tipo de archivo (HEIC, PNG, vídeos). Lo que obtienes es una lista que tendrías que copiar después al informe, foto por foto, con el riesgo de equivocarte al pegar una huella en la fila que no es.</p>
+<aside class="guia-llamada" aria-label="Cómo lo hace PeritoLab Matrículas"><p>PeritoLab Matrículas puede añadir al reportaje en PDF una hoja con la huella SHA-256 de cada foto. <a href="matriculas.html" data-clic="g.cadena-custodia-fotos-peritaje.m">Ver cómo funciona →</a></p></aside>
+<h2>Cómo incluirla en el informe</h2>
+<p>La huella sirve de poco si nadie sabe a qué foto corresponde. Una hoja de cadena de custodia útil tiene, para cada foto del reportaje:</p>
+<p>1. <strong>El número de la foto</strong> en el informe, el mismo que citas en el texto («ver foto 7»). 2. <strong>El nombre del archivo</strong>, tal como está en tu archivo. 3. <strong>La fecha y la hora</strong> en que se hizo, si la foto la guarda. 4. <strong>La huella SHA-256</strong> completa, sin cortar.</p>
+<p>Añade una línea que explique cómo se comprueba, para que quien lea el informe no tenga que preguntarte: por ejemplo, «la huella se puede comprobar en cualquier Windows con la orden certutil -hashfile "archivo" SHA256». Y guarda los archivos originales con el mismo nombre que aparece en la hoja: si mañana te piden las fotos, tienen que dar exactamente esas huellas.</p>
+<p>Un último detalle: las huellas se copian a mano mal con mucha facilidad. Un solo carácter cambiado basta para que la comprobación falle y para que se ponga en duda todo lo demás. Si puedes, que la hoja la genere un programa y no la escribas tú.</p>
+<h2>Que lo haga el programa al crear el reportaje</h2>
+<p>Si ya montas el reportaje fotográfico de cada vehículo con <a href="matriculas.html">PeritoLab Matrículas</a>, la hoja de custodia sale con él. Al crear el informe en PDF puedes añadir, si quieres, una hoja con la huella SHA-256 de cada foto, junto a las páginas de fotos con su número, su pie, su fecha y hora y el nombre del archivo. Matrículas siempre trabaja sobre una copia: los originales se quedan como estaban, que es lo que una cadena de custodia necesita. Y todo se hace en tu ordenador, sin subir ninguna foto a internet.</p>
+<p>Si aún montas el reportaje a mano, en la guía sobre el <a href="guia-reportaje-fotografico-pericial.html">reportaje fotográfico del informe pericial</a> tienes cómo elegir, ordenar y numerar las fotos antes de añadir la hoja.</p>
+<h2>En resumen</h2>
+<ul><li>La huella SHA-256 demuestra que una foto no ha cambiado desde que se calculó; no demuestra cuándo se hizo.</li><li>Calcúlala lo antes posible, sobre los originales, y no los toques después.</li><li>En Windows: `certutil -hashfile "foto.jpg" SHA256` o `Get-FileHash *.jpg` para toda la carpeta.</li><li>En el informe, una hoja con el número de cada foto, su nombre, su fecha y su huella, y cómo se comprueba.</li></ul><aside class="card guia-cta" aria-label="PeritoLab Matrículas"><p class="guia-cta-tit"><strong>PeritoLab Matrículas</strong></p><p>Lee la matrícula de cada foto y deja la jornada separada en una carpeta por vehículo.</p><ul class="checks"><li><span>Una carpeta por matrícula, con las fotos renombradas «2821MPF (1)», «(2)»…</span></li><li><span>Lo que no está claro se marca para revisar: la última palabra es tuya.</span></li><li><span>El reportaje fotográfico en PDF de cada vehículo, listo para el expediente.</span></li><li><span>Todo en tu ordenador: las fotos no salen de él.</span></li></ul><div class="guia-cta-botones"><a class="btn btn-primary" href="descarga.html?app=matriculas" data-clic="g.cadena-custodia-fotos-peritaje.f">Descargar · 30 días gratis</a><a class="btn btn-ghost" href="matriculas.html" data-clic="g.cadena-custodia-fotos-peritaje.f">Ver cómo funciona</a></div><p class="guia-cta-nota">Para Windows 10 y 11 · 30 días gratis, sin tarjeta</p></aside><section class="guia-relacionadas" aria-label="Sigue leyendo"><h2>Sigue leyendo</h2><ul class="guias"><li><a class="guia-fila" href="guia-caso-gpfial.html"><img class="guia-mini" src="img/caso-gpfial-archivo-real.svg" width="160" height="84" loading="lazy" decoding="async" alt=""><span><strong>Caso real: cómo GPFIAL organiza miles de fotos de peritaje al año</strong><span>Cómo un gabinete pericial de Canarias organiza miles de fotos al año: 56.963 fotos reales de 1.866 vehículos, más del 99 % en su carpeta.</span></span></a></li><li><a class="guia-fila" href="guia-elegir-programa-fotos-peritaje.html"><img class="guia-mini" src="img/elegir-programa-fotos-peritaje.svg" width="160" height="84" loading="lazy" decoding="async" alt=""><span><strong>Programa para las fotos del peritaje: qué mirar antes de elegirlo</strong><span>Cuánto tiempo te cuesta separar las fotos a mano y qué comprobar en un programa para el peritaje: fotos en local, revisión de dudas, originales y PDF.</span></span></a></li><li><a class="guia-fila" href="guia-ordenar-fotos-fecha-captura.html"><img class="guia-mini" src="img/guia-reportaje.svg" width="160" height="84" loading="lazy" decoding="async" alt=""><span><strong>Cómo ordenar las fotos por fecha de captura en Windows</strong><span>Por qué las fotos del peritaje salen desordenadas por nombre y cómo ordenarlas en Windows por la fecha en que se hicieron, sin instalar nada.</span></span></a></li></ul></section><p class="guia-mas"><a href="guias.html">← Todas las guías</a></p>
+</div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="brand" href="./"><svg aria-hidden="true" viewBox="0 0 20 20"><use href="#logo"/></svg>PeritoLab</a>
+        <p class="tagline">Software para peritos, gabinetes y talleres. Desarrollado en España.</p>
+        <a href="mailto:contacto.peritolab@gmail.com">contacto.peritolab@gmail.com</a>
+      </div>
+      <div><p class="foot-tit">Herramientas</p><a href="matriculas.html">PeritoLab Matrículas</a><a href="compresor.html">Compresor · gratis</a><a href="conversor.html">Conversor · gratis</a><a href="talleres.html">PeritoLab Taller</a><a href="matriculas.html#precios">Precios</a><a href="descarga.html?app=matriculas">Descargar</a></div>
+      <div><p class="foot-tit">PeritoLab</p><a href="guia-caso-gpfial.html">Caso real: GPFIAL</a><a href="guias.html">Guías para peritos</a><a href="mailto:contacto.peritolab@gmail.com?subject=Demo%20de%20PeritoLab%20Matr%C3%ADculas&body=Hola%2C%20me%20gustar%C3%ADa%20ver%20una%20demo%20de%2015%20minutos.">Pedir una demo</a></div>
+      <div><p class="foot-tit">Legal</p><a href="aviso-legal.html">Aviso legal</a><a href="condiciones.html">Condiciones</a><a href="privacidad.html">Privacidad</a><a href="cookies.html" data-cookies>Cookies</a></div>
+    </div>
+    <div class="foot-legal">
+      <span>© <span data-year-now>2026</span> PeritoLab · Desarrollado en España</span>
+      <a href="mailto:contacto.peritolab@gmail.com">contacto.peritolab@gmail.com</a>
+    </div>
+  </div>
+</footer>
+<script src="web.js?v=949ac6c928"></script>
+</body>
+</html>
